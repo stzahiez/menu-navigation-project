@@ -1,0 +1,18 @@
+#Chunk
+#SOF
+64
+#Type
+80
+#Address
+00
+10
+#Length
+00	02
+#Payload
+00
+00
+00
+#CRC
+92
+#EOF
+C8
