@@ -1,4 +1,3 @@
-cd C:/Users/tzahi/Dropbox/Menu_Navigation_Proj/menu-navigation-project/trunk/VHDL/simulation/navigator_tb/debouncer_tb
 vlib work
 vmap work work
 vcom -reportprogress 300 -work work C:/Users/tzahi/Dropbox/Menu_Navigation_Proj/menu-navigation-project/trunk/VHDL/design/navigator/debouncer/debouncer.vhd
