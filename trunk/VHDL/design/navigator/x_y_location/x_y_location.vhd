@@ -380,18 +380,42 @@ begin
 				    -- right button pressed
 				    when "1000" =>
 				      x_int <= x_int + 1; 
+				      
+				      if (x_int /= ( std_logic_vector(to_unsigned(hor_max_value-1 , hor_width_g)) )) then
+				        curr_sm <= inner_st;
+				      else
+				        curr_sm <= right_st;
+					    end if;
 					  
 					  -- left button pressed
 				    when "0100" =>
 				      x_int <= x_int - 1;
+				      
+				      if (x_int /= ( std_logic_vector(to_unsigned(1 , hor_width_g)) )) then
+				        curr_sm <= inner_st;
+				      else
+				        curr_sm <= left_st;
+					    end if;
 				      					  
 					  -- up button pressed
 					  when "0010" =>
-				      y_int <= y_int - 1;  
+				      y_int <= y_int - 1; 
+				      
+				      if (y_int /= ( std_logic_vector(to_unsigned(1 , ver_width_g)) )) then
+				        curr_sm <= inner_st;
+				      else
+				        curr_sm <= upper_st;
+					    end if;   
 					 
 					  -- down button pressed
 					  when "0001" =>
 				      y_int <= y_int + 1;
+				      
+				      if (y_int /= ( std_logic_vector(to_unsigned(ver_max_value-1 , ver_width_g)) )) then
+				        curr_sm <= inner_st;
+				      else
+				        curr_sm <= lower_st;
+					    end if;
 				      
 				 		when others =>
 				      curr_sm <= inner_st;
