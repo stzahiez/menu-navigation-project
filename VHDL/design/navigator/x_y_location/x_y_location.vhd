@@ -18,7 +18,7 @@
 ------------------------------------------------------------------------------------------------
 -- Revision:
 --			Number		Date		         Name									Description			
---			1.00		  07.05.2015	   	Tzahi Ezra			Creation
+--			1.00		  30.05.2015	   	Tzahi Ezra			Creation
 
 library ieee;
 use IEEE.std_logic_1164.all;
@@ -28,11 +28,11 @@ use ieee.numeric_std.all; -- For to_unsigned() function
 
 entity x_y_location is
   generic(
-    hor_width_g  : 		positive	:= 5; 	-- the width of horizonal output lines, needed to hold the maximum horizontal location value.
-    ver_width_g  : 		positive	:= 4; 	-- the width of vertical output lines, needed to hold the maximum vertical location value.
-    reset_polarity_g  : std_logic := '1';  -- the reset polarity of the system.
-    hor_max_value  : 		positive	:= 19; 	-- the maximum horizontal location value.
-    ver_max_value  : 		positive	:= 14 	-- the  maximum vertical location value.
+    hor_width_g  : 		positive	:= 5; 	-- The width of horizonal output lines, needed to hold the maximum horizontal location value.
+    ver_width_g  : 		positive	:= 4; 	-- The width of vertical output lines, needed to hold the maximum vertical location value.
+    reset_polarity_g  : std_logic := '1';  -- The reset polarity of the system.
+    hor_max_value  : 		positive	:= 19; 	-- The maximum horizontal location value.
+    ver_max_value  : 		positive	:= 14 	-- The  maximum vertical location value.
 
     );
   port (
