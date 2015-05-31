@@ -72,8 +72,8 @@ architecture sim_update_upon_vsync_TB of update_upon_vsync_TB is
 	
 update_upon_vsync_inst : update_upon_vsync
 	  generic map(
-	    hor_width_g => 5,
-	    ver_width_g => 4,
+	    hor_width_g => hor_width_g,
+	    ver_width_g => ver_width_g,
 	    reset_polarity_g => '1'
 	  )
 	  port map(
