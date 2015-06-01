@@ -106,11 +106,11 @@ begin
 		-- Reset generator	
 	reset_proc: process
 		begin
-		reset <= '0';
+		reset <= not reset_polarity_c;
 		wait for 1 ns;
 		
 		-- Check output data is '0' after reset signal goes high  
-		reset <= '1';
+		reset <= reset_polarity_c;
 		wait for 1 ns; 
 		
 		assert (x_out = hor_width_zeros_c)
@@ -121,7 +121,7 @@ begin
     report "Reset data output check error was found at: " & time'image(now) & " y_out: " & integer'image(to_integer(unsigned(y_out))) & " expected: 0 "    
     severity error ;
 		
-		reset <= '0';
+		reset <= not reset_polarity_c;
 		wait for 5 ns;
 		
 		-- Check data is still '0' after reset signal goes low  
@@ -175,7 +175,7 @@ begin
             down_trig <= '0';
         end case;
         uniform(seed3_v, seed4_v, rand2_v);     
-        interval_rand_v := trunc(max_interval_time_c*rand2_v)*1 ns; -- Rescale to 0..3, find integer part
+        interval_rand_v := trunc(max_interval_time_c*rand2_v)*1 ns; -- Rescale to 0..1000ns, find integer part
 
         wait for interval_rand_v;
         
