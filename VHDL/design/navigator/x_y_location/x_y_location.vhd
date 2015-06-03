@@ -31,8 +31,8 @@ entity x_y_location is
     hor_width_g  : 		positive	:= 5; 	-- The width of horizonal output lines, needed to hold the maximum horizontal location value.
     ver_width_g  : 		positive	:= 4; 	-- The width of vertical output lines, needed to hold the maximum vertical location value.
     reset_polarity_g  : std_logic := '1';  -- The reset polarity of the system.
-    hor_max_value  : 		positive	:= 19; 	-- The maximum horizontal location value.
-    ver_max_value  : 		positive	:= 14 	-- The  maximum vertical location value.
+    hor_max_value_g  : 		positive	:= 19; 	-- The maximum horizontal location value.
+    ver_max_value_g  : 		positive	:= 14 	-- The  maximum vertical location value.
 
     );
   port (
@@ -82,14 +82,14 @@ begin
 					  -- left button pressed
 				    when "0100" =>
 				      curr_sm <= lower_right_st;
-				      x_int <= ( std_logic_vector(to_unsigned(hor_max_value , hor_width_g)) );
-				      y_int <= ( std_logic_vector(to_unsigned(ver_max_value , ver_width_g)) ); 
+				      x_int <= ( std_logic_vector(to_unsigned(hor_max_value_g , hor_width_g)) );
+				      y_int <= ( std_logic_vector(to_unsigned(ver_max_value_g , ver_width_g)) ); 
 					  
 					  -- up button pressed
 					  when "0010" =>
 				      curr_sm <= lower_st;
 				      x_int <= ( std_logic_vector(to_unsigned(1 , hor_width_g)) );
-				      y_int <= ( std_logic_vector(to_unsigned(ver_max_value , ver_width_g)) );   
+				      y_int <= ( std_logic_vector(to_unsigned(ver_max_value_g , ver_width_g)) );   
 					 
 					  -- down button pressed
 					   when "0001" =>
@@ -101,7 +101,7 @@ begin
 				      curr_sm <= upper_left_st;		    
       end case;
 				      
-			 -- upper right corner state (X=hor_max_value, Y=0)
+			 -- upper right corner state (X=hor_max_value_g, Y=0)
 			 when upper_right_st =>
 				  case right_trig&left_trig&up_trig&down_trig is
 				    
@@ -114,25 +114,25 @@ begin
 					  -- left button pressed
 				    when "0100" =>
 				      curr_sm <= upper_st;
-				      x_int <= ( std_logic_vector(to_unsigned(hor_max_value-1 , hor_width_g)) );
+				      x_int <= ( std_logic_vector(to_unsigned(hor_max_value_g-1 , hor_width_g)) );
 				      y_int <= ( std_logic_vector(to_unsigned(0 , ver_width_g)) ); 
 					  
 					  -- up button pressed
 					  when "0010" =>
 				      curr_sm <= lower_left_st;
 				      x_int <= ( std_logic_vector(to_unsigned(0 , hor_width_g)) );
-				      y_int <= ( std_logic_vector(to_unsigned(ver_max_value , ver_width_g)) );   
+				      y_int <= ( std_logic_vector(to_unsigned(ver_max_value_g , ver_width_g)) );   
 					 
 					  -- down button pressed
 					  when "0001" =>
 					    curr_sm <= right_st;
-				      x_int <= ( std_logic_vector(to_unsigned(hor_max_value , hor_width_g)) );
+				      x_int <= ( std_logic_vector(to_unsigned(hor_max_value_g , hor_width_g)) );
 				      y_int <= ( std_logic_vector(to_unsigned(1 , ver_width_g)) );
 				 		when others =>
 				      curr_sm <= upper_right_st;
           end case;
       
-        -- lower right corner state (X=hor_max_value, Y=ver_max_value)
+        -- lower right corner state (X=hor_max_value_g, Y=ver_max_value_g)
 		  when lower_right_st =>
 				  case right_trig&left_trig&up_trig&down_trig is
 				    
@@ -145,25 +145,25 @@ begin
 					  -- left button pressed
 				    when "0100" =>
 				      curr_sm <= lower_st;
-				      x_int <= ( std_logic_vector(to_unsigned(hor_max_value-1 , hor_width_g)) );
-				      y_int <= ( std_logic_vector(to_unsigned(ver_max_value , ver_width_g)) ); 
+				      x_int <= ( std_logic_vector(to_unsigned(hor_max_value_g-1 , hor_width_g)) );
+				      y_int <= ( std_logic_vector(to_unsigned(ver_max_value_g , ver_width_g)) ); 
 					  
 					  -- up button pressed
 					  when "0010" =>
 				      curr_sm <= right_st;
-				      x_int <= ( std_logic_vector(to_unsigned(hor_max_value , hor_width_g)) );
-				      y_int <= ( std_logic_vector(to_unsigned(ver_max_value-1 , ver_width_g)) );   
+				      x_int <= ( std_logic_vector(to_unsigned(hor_max_value_g , hor_width_g)) );
+				      y_int <= ( std_logic_vector(to_unsigned(ver_max_value_g-1 , ver_width_g)) );   
 					 
 					  -- down button pressed
 					  when "0001" =>
 					    curr_sm <= upper_st;
-				      x_int <= ( std_logic_vector(to_unsigned(hor_max_value-1 , hor_width_g)) );
+				      x_int <= ( std_logic_vector(to_unsigned(hor_max_value_g-1 , hor_width_g)) );
 				      y_int <= ( std_logic_vector(to_unsigned(0 , ver_width_g)) );
 				 		when others =>
 				      curr_sm <= lower_right_st;
           end case;
       
-       -- lower left corner state (X=0, Y=ver_max_value)
+       -- lower left corner state (X=0, Y=ver_max_value_g)
 		   when lower_left_st =>
 				  case right_trig&left_trig&up_trig&down_trig is
 				    
@@ -171,30 +171,30 @@ begin
 				    when "1000" =>
 				      curr_sm <= lower_st;
 				      x_int <= ( std_logic_vector(to_unsigned(1 , hor_width_g)) );
-				      y_int <= ( std_logic_vector(to_unsigned(ver_max_value , ver_width_g)) ); 
+				      y_int <= ( std_logic_vector(to_unsigned(ver_max_value_g , ver_width_g)) ); 
 					  
 					  -- left button pressed
 				    when "0100" =>
 				      curr_sm <= right_st;
-				      x_int <= ( std_logic_vector(to_unsigned(hor_max_value , hor_width_g)) );
-				      y_int <= ( std_logic_vector(to_unsigned(ver_max_value-1 , ver_width_g)) ); 
+				      x_int <= ( std_logic_vector(to_unsigned(hor_max_value_g , hor_width_g)) );
+				      y_int <= ( std_logic_vector(to_unsigned(ver_max_value_g-1 , ver_width_g)) ); 
 					  
 					  -- up button pressed
 					  when "0010" =>
 				      curr_sm <= left_st;
 				      x_int <= ( std_logic_vector(to_unsigned(0 , hor_width_g)) );
-				      y_int <= ( std_logic_vector(to_unsigned(ver_max_value-1 , ver_width_g)) );   
+				      y_int <= ( std_logic_vector(to_unsigned(ver_max_value_g-1 , ver_width_g)) );   
 					 
 					  -- down button pressed
 					  when "0001" =>
 					    curr_sm <= upper_right_st;
-				      x_int <= ( std_logic_vector(to_unsigned(hor_max_value , hor_width_g)) );
+				      x_int <= ( std_logic_vector(to_unsigned(hor_max_value_g , hor_width_g)) );
 				      y_int <= ( std_logic_vector(to_unsigned(0 , ver_width_g)) );
 				 		when others =>
 				      curr_sm <= lower_left_st;
           end case;
           
-      -- upper state (X=1..hor_max_value-1, Y=0)
+      -- upper state (X=1..hor_max_value_g-1, Y=0)
 		  when upper_st =>
 				  case right_trig&left_trig&up_trig&down_trig is
 				    
@@ -203,7 +203,7 @@ begin
 				      x_int <= x_int + 1;
 				      y_int <= ( std_logic_vector(to_unsigned(0 , ver_width_g)) );
 			
-				      if (x_int /= ( std_logic_vector(to_unsigned(hor_max_value-1 , hor_width_g)))) then
+				      if (x_int /= ( std_logic_vector(to_unsigned(hor_max_value_g-1 , hor_width_g)))) then
 				        curr_sm <= upper_st;
 				      else
 				        curr_sm <= upper_right_st;
@@ -223,9 +223,9 @@ begin
 					  -- up button pressed
 					  when "0010" =>
 				      x_int <= x_int + 1;
-				      y_int <= ( std_logic_vector(to_unsigned(ver_max_value , ver_width_g)) );  
+				      y_int <= ( std_logic_vector(to_unsigned(ver_max_value_g , ver_width_g)) );  
 				      
-				      if (x_int /= ( std_logic_vector(to_unsigned(hor_max_value-1 , hor_width_g)) )) then
+				      if (x_int /= ( std_logic_vector(to_unsigned(hor_max_value_g-1 , hor_width_g)) )) then
 				        curr_sm <= lower_st;
 				      else
 				        curr_sm <= lower_right_st;
@@ -240,7 +240,7 @@ begin
 				      curr_sm <= upper_st;
           end case;
           
-      -- right state (X=hor_max_value, Y=1..ver_max_value-1)
+      -- right state (X=hor_max_value_g, Y=1..ver_max_value_g-1)
 		  when right_st =>
 				  case right_trig&left_trig&up_trig&down_trig is
 				    
@@ -249,7 +249,7 @@ begin
 				      x_int <= ( std_logic_vector(to_unsigned(0 , hor_width_g)) );
 				      y_int <= y_int + 1; 
 				      
-				      if (y_int /= ( std_logic_vector(to_unsigned(ver_max_value-1 , ver_width_g)) )) then
+				      if (y_int /= ( std_logic_vector(to_unsigned(ver_max_value_g-1 , ver_width_g)) )) then
 				        curr_sm <= left_st;
 				      else
 				        curr_sm <= lower_left_st;
@@ -258,7 +258,7 @@ begin
 					  -- left button pressed
 				    when "0100" =>
 				      curr_sm <= inner_st;
-				      x_int <= ( std_logic_vector(to_unsigned(hor_max_value-1 , hor_width_g)) );
+				      x_int <= ( std_logic_vector(to_unsigned(hor_max_value_g-1 , hor_width_g)) );
 					  
 					  -- up button pressed
 					  when "0010" =>				     
@@ -274,7 +274,7 @@ begin
 					  when "0001" =>
 				      y_int <= y_int + 1;
 				      
-				      if (y_int /= ( std_logic_vector(to_unsigned(ver_max_value-1 , ver_width_g)) )) then
+				      if (y_int /= ( std_logic_vector(to_unsigned(ver_max_value_g-1 , ver_width_g)) )) then
 				        curr_sm <= right_st;
 				      else
 				        curr_sm <= lower_right_st;
@@ -284,7 +284,7 @@ begin
 				      curr_sm <= right_st;
           end case;
         
-        -- lower state (X=1..hor_max_value-1, Y=ver_max_value)  
+        -- lower state (X=1..hor_max_value_g-1, Y=ver_max_value_g)  
     		  when lower_st => 
 				  case right_trig&left_trig&up_trig&down_trig is
 				    
@@ -292,7 +292,7 @@ begin
 				    when "1000" =>
 				      x_int <= x_int + 1;
 					    
-					    if (x_int /= ( std_logic_vector(to_unsigned(hor_max_value-1 , hor_width_g)) )) then
+					    if (x_int /= ( std_logic_vector(to_unsigned(hor_max_value_g-1 , hor_width_g)) )) then
 				        curr_sm <= lower_st;
 				      else
 				        curr_sm <= lower_right_st;
@@ -312,7 +312,7 @@ begin
 					  -- up button pressed
 					  when "0010" =>
 				      curr_sm <= inner_st;
-				      y_int <= ( std_logic_vector(to_unsigned(ver_max_value-1 , ver_width_g)) ); 
+				      y_int <= ( std_logic_vector(to_unsigned(ver_max_value_g-1 , ver_width_g)) ); 
 					 
 					  -- down button pressed
 					  when "0001" =>
@@ -329,7 +329,7 @@ begin
 				      curr_sm <= lower_st;
 	        end case;
               
-		    -- left state (X=0, Y=1..ver_max_value-1)  
+		    -- left state (X=0, Y=1..ver_max_value_g-1)  
     		  when left_st => 
 				  case right_trig&left_trig&up_trig&down_trig is
 				    
@@ -340,7 +340,7 @@ begin
 					  
 					  -- left button pressed
 				    when "0100" =>
-				      x_int <= ( std_logic_vector(to_unsigned(hor_max_value , hor_width_g)) );
+				      x_int <= ( std_logic_vector(to_unsigned(hor_max_value_g , hor_width_g)) );
 				      y_int <= y_int - 1;
 				      
 				      if (y_int /= ( std_logic_vector(to_unsigned(1 , ver_width_g)) )) then
@@ -363,7 +363,7 @@ begin
 					  when "0001" =>
 					    y_int <= y_int + 1;
 					    
-					    if (y_int /= ( std_logic_vector(to_unsigned(ver_max_value-1 , ver_width_g)) )) then
+					    if (y_int /= ( std_logic_vector(to_unsigned(ver_max_value_g-1 , ver_width_g)) )) then
 				        curr_sm <= left_st;
 				      else
 				        curr_sm <= lower_left_st;
@@ -373,7 +373,7 @@ begin
 				      curr_sm <= left_st;
 		     end case;
 		     
-		      -- inner state (X=1..hor_max_value-1, Y=1..ver_max_value-1)
+		      -- inner state (X=1..hor_max_value_g-1, Y=1..ver_max_value_g-1)
 		    when inner_st =>
 				  case right_trig&left_trig&up_trig&down_trig is
 				    
@@ -381,7 +381,7 @@ begin
 				    when "1000" =>
 				      x_int <= x_int + 1; 
 				      
-				      if (x_int /= ( std_logic_vector(to_unsigned(hor_max_value-1 , hor_width_g)) )) then
+				      if (x_int /= ( std_logic_vector(to_unsigned(hor_max_value_g-1 , hor_width_g)) )) then
 				        curr_sm <= inner_st;
 				      else
 				        curr_sm <= right_st;
@@ -411,7 +411,7 @@ begin
 					  when "0001" =>
 				      y_int <= y_int + 1;
 				      
-				      if (y_int /= ( std_logic_vector(to_unsigned(ver_max_value-1 , ver_width_g)) )) then
+				      if (y_int /= ( std_logic_vector(to_unsigned(ver_max_value_g-1 , ver_width_g)) )) then
 				        curr_sm <= inner_st;
 				      else
 				        curr_sm <= lower_st;
