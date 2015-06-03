@@ -22,13 +22,26 @@ entity update_upon_vsync_TB is
 end entity update_upon_vsync_TB;
 
 architecture sim_update_upon_vsync_TB of update_upon_vsync_TB is
+--############################# Constants ############################################--
+  constant reset_polarity_c  : std_logic := '1';
+  constant hor_width_c : 		positive	:= 5; 
+  constant ver_width_c : 		positive	:= 4;
+  constant hor_max_value_c : positive	:= 19; 
+  constant real_hor_max_value_c  : real	:= 19.0;
+  constant ver_max_value_c  : positive	:= 14;
+  constant real_ver_max_value_c  : real	:= 14.0;
+  constant max_interval_time_c  : real := 1000.0; -- Maximum time interval beteen button press check in ns 	  
+  constant loop_size_c  : positive := 100;
+  constant hor_width_zeros_c : std_logic_vector(hor_width_c-1 downto 0) := (others => '0');
+  constant ver_width_zeros_c : std_logic_vector(ver_width_c-1 downto 0) := (others => '0'); 
+
 --#############################	Components	##############################################--
 	  
   component update_upon_vsync
   generic(
-    hor_width_g  : 		positive	:= 5; 	-- the width of horizonal output lines, needed to hold the maximum horizontal location value.
-    ver_width_g  : 		positive	:= 4; 	-- the width of vertical output lines, needed to hold the maximum vertical location value.
-    reset_polarity_g  : std_logic := '1'  -- the reset polarity of the system.   
+    hor_width_g  : 		positive	:= hor_width_c; 	-- the width of horizonal output lines, needed to hold the maximum horizontal location value.
+    ver_width_g  : 		positive	:= ver_width_c; 	-- the width of vertical output lines, needed to hold the maximum vertical location value.
+    reset_polarity_g  : std_logic := reset_polarity_c  -- the reset polarity of the system.   
     );
   port (
     reset	    : 		in std_logic; -- Asynchronous reset.
@@ -43,18 +56,6 @@ architecture sim_update_upon_vsync_TB of update_upon_vsync_TB is
   
   
 
- --############################# Constants ############################################--
-  constant reset_polarity_c  : std_logic := '1';
-  constant hor_width_c : 		positive	:= 5; 
-  constant ver_width_c : 		positive	:= 4;
-  constant hor_max_value_c : positive	:= 19; 
-  constant real_hor_max_value_c  : real	:= 19.0;
-  constant ver_max_value_c  : positive	:= 14;
-  constant real_ver_max_value_c  : real	:= 14.0;
-  constant max_interval_time_c  : real := 1000.0; -- Maximum time interval beteen button press check in ns 	  
-  constant loop_size_c  : positive := 100;
-  constant hor_width_zeros_c : std_logic_vector(hor_width_c-1 downto 0) := (others => '0');
-  constant ver_width_zeros_c : std_logic_vector(ver_width_c-1 downto 0) := (others => '0'); 
   
  --#############################	Signals ##############################################--
 	signal clk 				: 	 std_logic:= '0';
