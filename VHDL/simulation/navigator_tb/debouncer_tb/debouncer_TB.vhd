@@ -20,12 +20,17 @@ entity debouncer_TB is
 end entity debouncer_TB;
 
 architecture sim_debouncer_TB of debouncer_TB is
+
+--############################# Constants ############################################--
+  constant reset_polarity_c  : std_logic := '1';
+  constant max_value_c : 		positive	:= 50000000; 
+  
 --#############################	Components	##############################################--
 	  
   component debouncer 
 	  generic(
-	    max_value_g  : 		positive	:= 50000000; 	-- Number of clk cycles to wait, before output a rectangular Pulse in width of one cycle.
-	    reset_polarity_g  :   std_logic := '1'  -- The reset polarity that is used to determine which event causes the all the registers to be zero.		 
+	    max_value_g  : 		positive	:= max_value_c; 	-- Number of clk cycles to wait, before output a rectangular Pulse in width of one cycle.
+	    reset_polarity_g  :   std_logic := reset_polarity_c  -- The reset polarity that is used to determine which event causes the all the registers to be zero.		 
     );
     port (
       clk 				: 		in std_logic; -- The main clock of the system. frequency 100Mhz.
@@ -43,14 +48,16 @@ architecture sim_debouncer_TB of debouncer_TB is
 	signal din	    : 	 std_logic;
 	signal dout   	 : 	 std_logic;
 	
+
+
 begin
 	
 	--#############################	Instantiaion ##############################################--
 	
 	debouncer_inst : debouncer
 	  generic map(
-	    max_value_g => 50000000,
-	    reset_polarity_g => '1'
+	    max_value_g => max_value_c,
+	    reset_polarity_g => reset_polarity_c
 	  )
 	  port map(
 	    clk => clk,
@@ -63,11 +70,11 @@ begin
 		-- reset generator	
 		reset_proc: process
 	  begin
-		reset <= '0';
+		reset <= not reset_polarity_c;
 		wait for 1 ns;
 		
 		--check data is '0' after reset signal goes high  
-		reset <= '1';
+		reset <= reset_polarity_c;
 		wait until	reset = '1'; 
 		
 		assert (dout = '0')
@@ -77,7 +84,7 @@ begin
 		wait for 5 ns;
 		
 		--check data is still '0' after reset signal goes low  
-		reset <= '0';
+		reset <= not reset_polarity_c;
 		wait until	reset = '0'; 
 		
 		assert (dout = '0')
