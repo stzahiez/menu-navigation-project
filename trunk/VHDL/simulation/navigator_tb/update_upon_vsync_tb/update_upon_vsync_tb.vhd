@@ -44,6 +44,7 @@ architecture sim_update_upon_vsync_TB of update_upon_vsync_TB is
   
 
  --############################# Constants ############################################--
+  constant reset_polarity_c  : std_logic := '1';
   constant hor_width_c : 		positive	:= 5; 
   constant ver_width_c : 		positive	:= 4;
   constant hor_max_value_c : positive	:= 19; 
@@ -72,9 +73,9 @@ architecture sim_update_upon_vsync_TB of update_upon_vsync_TB is
 	
 update_upon_vsync_inst : update_upon_vsync
 	  generic map(
-	    hor_width_g => hor_width_g,
-	    ver_width_g => ver_width_g,
-	    reset_polarity_g => '1'
+	    hor_width_g => hor_width_c,
+	    ver_width_g => ver_width_c,
+	    reset_polarity_g => reset_polarity_c
 	  )
 	  port map(
 	    reset => reset,
@@ -90,11 +91,11 @@ update_upon_vsync_inst : update_upon_vsync
 		-- Reset generator	
 	  reset_proc: process
 		begin
-		reset <= '0';
+		reset <= not reset_polarity_c;
 		wait for 1 ns;
 		
 		-- Check output data is '0' after reset signal goes high  
-		reset <= '1';
+		reset <= reset_polarity_c;
     wait for 1 ns; 
     
 		assert (x_updated = hor_width_zeros_c)
@@ -105,7 +106,7 @@ update_upon_vsync_inst : update_upon_vsync
     report "Reset data output check error was found at: " & time'image(now) & " y_updated: " & integer'image(to_integer(unsigned(y_updated))) & " expected: 0 "    
     severity error ;
 		
-		reset <= '0';
+		reset <= not reset_polarity_c;
 		wait;
     
 		end process reset_proc;
