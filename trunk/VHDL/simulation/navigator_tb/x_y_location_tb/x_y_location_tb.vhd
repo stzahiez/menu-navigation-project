@@ -21,15 +21,27 @@ entity x_y_location_TB is
 end entity x_y_location_TB;
 
 architecture sim_x_y_location_TB of x_y_location_TB is
+--############################# Constants ############################################--
+  constant reset_polarity_c  : std_logic := '1';
+  constant hor_width_c  : 		positive	:= 5; 
+  constant ver_width_c  : 		positive	:= 4;
+  constant hor_width_zeros_c : std_logic_vector(hor_width_c-1 downto 0) := (others => '0');
+  constant ver_width_zeros_c : std_logic_vector(ver_width_c-1 downto 0) := (others => '0');
+  constant loop_size_c  : positive := 100; 
+  constant num_of_directions_c  : real := 4.0;
+  constant hor_max_value_c  : positive	:= 19; 
+  constant ver_max_value_c  : positive	:= 14;
+  constant max_interval_time_c  : real := 1000.0; -- Maximum time interval beteen button press check in ns 	  
+
 --#############################	Components	##############################################--
 	  
   component x_y_location 
 	  generic(
-	    hor_width_g  : 		positive	:= 5; 	-- The width of horizonal output lines, needed to hold the maximum horizontal location value.
-      ver_width_g  : 		positive	:= 4; 	-- The width of horizonal output lines, needed to hold the maximum horizontal location value.
-      reset_polarity_g  :   std_logic := '1';  -- The reset polarity of the system.
-      hor_max_value  : 		positive	:= 19; 	-- The maximum horizontal location value.
-      ver_max_value  : 		positive	:= 14 	-- The  maximum vertical location value.
+	    hor_width_g  : 		positive	:= hor_width_c; 	-- The width of horizonal output lines, needed to hold the maximum horizontal location value.
+      ver_width_g  : 		positive	:= ver_width_c; 	-- The width of horizonal output lines, needed to hold the maximum horizontal location value.
+      reset_polarity_g  :   std_logic := reset_polarity_c;  -- The reset polarity of the system.
+      hor_max_value_g  : 		positive	:= hor_max_value_c; 	-- The maximum horizontal location value.
+      ver_max_value_g  : 		positive	:= ver_max_value_c 	-- The  maximum vertical location value.
     );
     port (
       clk 				: 		in std_logic; -- The main clock of the system. frequency 100Mhz.
@@ -43,18 +55,7 @@ architecture sim_x_y_location_TB of x_y_location_TB is
   );
   end component x_y_location;
 
-  --############################# Constants ############################################--
-  constant reset_polarity_c  : std_logic := '1';
-  constant hor_width_c  : 		positive	:= 5; 
-  constant ver_width_c  : 		positive	:= 4;
-  constant hor_width_zeros_c : std_logic_vector(hor_width_c-1 downto 0) := (others => '0');
-  constant ver_width_zeros_c : std_logic_vector(ver_width_c-1 downto 0) := (others => '0');
-  constant loop_size_c  : positive := 100; 
-  constant num_of_directions_c  : real := 4.0;
-  constant hor_max_value_c  : positive	:= 19; 
-  constant ver_max_value_c  : positive	:= 14;
-  constant max_interval_time_c  : real := 1000.0; -- Maximum time interval beteen button press check in ns 	  
-  --############################# types ################################################--
+   --############################# types ################################################--
 	
 	type direct_t is (right, left, up, down);-- Enum types for buttons pressed
 	type state_t is (right_st, left_st, upper_st, lower_st, upper_right_st, upper_left_st,
@@ -85,11 +86,11 @@ begin
 	
 	x_y_location_inst : x_y_location
 	  generic map(
-	    hor_width_g => 5,
-	    ver_width_g => 4,
-	    reset_polarity_g => '1',
-	    hor_max_value => 19,
-	    ver_max_value => 14
+	    hor_width_g => hor_width_c,
+	    ver_width_g => ver_width_c,
+	    reset_polarity_g => reset_polarity_c,
+	    hor_max_value_g => hor_max_value_c,
+	    ver_max_value_g => ver_max_value_c
 	  )
 	  port map(
 	    clk => clk,
