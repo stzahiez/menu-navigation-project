@@ -23,7 +23,7 @@ architecture sim_debouncer_TB of debouncer_TB is
 
 --############################# Constants ############################################--
   constant reset_polarity_c  : std_logic := '1';
-  constant max_value_c : 		positive	:= 50000000; 
+  constant max_value_c  : 		positive	:= 50000000; 
   
 --#############################	Components	##############################################--
 	  
@@ -35,8 +35,8 @@ architecture sim_debouncer_TB of debouncer_TB is
     port (
       clk 				: 		in std_logic; -- The main clock of the system. frequency 100Mhz.
       reset     : 		in std_logic; -- Asynchronous reset.
-      din	    : 		in std_logic; -- Input from a button on the DE2 board.
-      dout   	: 		out std_logic -- That is a signal that used to trigger a change of the cursor X,Y location, according to the button pressed.
+      din	    : 		in bit; -- Input from a button on the DE2 board.
+      dout   	: 		out bit -- That is a signal that used to trigger a change of the cursor X,Y location, according to the button pressed.
     );
   end component debouncer;
 
@@ -45,8 +45,8 @@ architecture sim_debouncer_TB of debouncer_TB is
 	
 	signal clk 				: 	 std_logic:= '0';
 	signal reset     :   std_logic; 
-	signal din	    : 	 std_logic;
-	signal dout   	 : 	 std_logic;
+	signal din	    : 	 bit;
+	signal dout   	 : 	 bit;
 	
 
 
@@ -75,20 +75,20 @@ begin
 		
 		--check data is '0' after reset signal goes high  
 		reset <= reset_polarity_c;
-		wait until	reset = '1'; 
+		wait until	reset = reset_polarity_c; 
 		
 		assert (dout = '0')
-    report "Reset data output check error was found at: " & time'image(now) & " dout: " & std_logic'image(dout) & " expected: '0' "     
+    report "Reset data output check error was found at: " & time'image(now) & " dout: " & bit'image(dout) & " expected: '0' "     
     severity error ;
 		
 		wait for 5 ns;
 		
 		--check data is still '0' after reset signal goes low  
 		reset <= not reset_polarity_c;
-		wait until	reset = '0'; 
+		wait until	reset = not reset_polarity_c; 
 		
 		assert (dout = '0')
-    report "Reset data output check error was found at: " & time'image(now) & " dout: " & std_logic'image(dout) & " expected: '0' "     
+    report "Reset data output check error was found at: " & time'image(now) & " dout: " & bit'image(dout) & " expected: '0' "     
     severity error ;
     
   		wait;
@@ -104,7 +104,7 @@ begin
       wait until clk = '0'; --first faling edge
       
       assert (dout = '0')
-      report "Pressing trigger concept check error was found at: " & time'image(now) & " dout: " & std_logic'image(dout) & " expected: '0' "     
+      report "Pressing trigger concept check error was found at: " & time'image(now) & " dout: " & bit'image(dout) & " expected: '0' "     
       severity error ;
       
       wait for 13000 ns;
@@ -114,7 +114,7 @@ begin
       wait until clk = '0'; --next faling edge
       
       assert (dout = '0')
-      report "Pressing trigger concept check error was found at: " & time'image(now) & " dout: " & std_logic'image(dout) & " expected: '0' "     
+      report "Pressing trigger concept check error was found at: " & time'image(now) & " dout: " & bit'image(dout) & " expected: '0' "     
       severity error ;
       
       wait for 13000 ns;
@@ -127,7 +127,7 @@ begin
       wait until clk = '0';
       
       assert (dout = '1')
-      report "Pressing trigger concept check error was found at: " & time'image(now)  & " dout: " & std_logic'image(dout) & " expected: '1' "     
+      report "Pressing trigger concept check error was found at: " & time'image(now)  & " dout: " & bit'image(dout) & " expected: '1' "     
       severity error ;
     
       wait;
