@@ -26,14 +26,14 @@ use ieee.numeric_std.all;
 
 entity debouncer is
   generic(
-    max_value_g  : 		positive	:= 50000000; 	-- Number of clk cycles to wait, before output a rectangular Pulse in width of one cycle.
+    max_value_g  : 		positive	:= 50; 	-- Number of clk cycles to wait, before output a rectangular Pulse in width of one cycle.
     reset_polarity_g  :   std_logic := '1'  -- The reset polarity that is used to determine which event causes the all the registers to be zero.		 
     );
   port (
     clk 				: 		in std_logic; -- The main clock of the system. frequency 100Mhz.
     reset     : 		in std_logic; -- Asynchronous reset.
-    din	    : 		in std_logic; -- Input from a button on the DE2 board.
-    dout   	: 		out std_logic -- That is a signal that used to trigger a change of the cursor X,Y location, according to the button pressed.
+    din	    : 		in bit; -- Input from a button on the DE2 board.
+    dout   	: 		out bit -- That is a signal that used to trigger a change of the cursor X,Y location, according to the button pressed.
   );
  end entity debouncer;
  
