@@ -32,7 +32,7 @@ entity navigator is
     reset_polarity_g  : std_logic := '1';  -- the reset polarity of the system.
     hor_max_value_g  : 		positive	:= 19; 	-- The maximum horizontal location value.
     ver_max_value_g  : 		positive	:= 14; 	-- The  maximum vertical location value.
-    max_value_g  : 		positive	:= 50 -- The number of clk cycles to wait, before output a rectangular Pulse in width of one cycle.
+    max_value_g  : 		positive	:= 50000000 -- The number of clk cycles to wait, before output a rectangular Pulse in width of one cycle.
     );
   port (
     clk 				: 		in std_logic; -- The main clock of the system. frequency 100Mhz.
@@ -67,8 +67,8 @@ entity navigator is
       up_trig     :   in bit; -- Up enable.
       down_trig     :   in bit; -- Down enable.
       vsync     :   in std_logic; -- VSync Signal from the vesa gen ctrl block, indicates start of frame display, from the upper left corner on screen.
-      x_updated   	: 		out std_logic_vector(5-1 downto 0); -- The future horizontal location of the cursor in the frame.
-      y_updated   	: 		out std_logic_vector(4-1 downto 0) -- The future vertical location of the cursor in the frame.
+      x_updated   	: 		out std_logic_vector(hor_width_g-1 downto 0); -- The future horizontal location of the cursor in the frame.
+      y_updated   	: 		out std_logic_vector(ver_width_g-1 downto 0) -- The future vertical location of the cursor in the frame.
     );
   end component x_y_location_top;
   
