@@ -235,8 +235,7 @@ reset_proc: process
         down <= '0';
         
         uniform(seed3_v, seed4_v, rand2_v);     
-        interval_rand_v := trunc(max_interval_time_c*rand2_v)*1 ns; -- Rescale to 0..1000ns, find integer part
-
+        interval_rand_v := trunc(max_interval_time_c*rand2_v)*1 ns; -- Rescale to 0..1000ns
         wait for interval_rand_v;
         
       end loop;
