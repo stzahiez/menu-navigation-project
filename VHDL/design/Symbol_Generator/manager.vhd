@@ -28,7 +28,12 @@
 --			1.07		11.03.2013		Olga									I changed the value of sdram_wait_c from 55 to 100
 --			1.08		12.03.2013		Olga & Yoav								integration changes with beeri external environment. 
 --			1.09		19.03.2013		Olga									In process sdram_wait_proc: using counter only for backup, but counting the data valid for most of the time
---
+--			1.10		04.06.2015		Tzahi								Adding 2 ports for horizonal and vertical location of cursor symbol, hor_location & ver_location.
+--    1.11		04.06.2015		Tzahi								Adding a sdram mux signal, sdram_mux_out, used to used to assign the a & b fifo's with sdram_data or its inversion,
+--                                   if the internal count of sym_row & sym_col reaches hor_location & ver_location in corespondance.
+--    1.12  04.06.2015		Tzahi        Adding a symbol inversion process, sym_inversion process, which describes the behaviour of the sdram mux.
+--    1.13  13.06.2015		Tzahi        Changing the sym_inversion process, such that the mux selector would be '1' if sym_row=ver_location & sym_col=(hor_location+1).
+
 ------------------------------------------------------------------------------------------------
 --	Todo:
 --	(1) rd_mng_fsm_proc: maybe to add "if (fifo_x_full='0') then wr_en='1'..." - to enable write to fifo only if it's not full
@@ -66,40 +71,25 @@ entity manager is
     clk 				: 		in std_logic; -- The main clock to which all the internal logic of the Symbol Generator block is synchronized.
     reset_n 			: 		in std_logic; -- Asynchronous reset 
     ram_data_out 		: 		in std_logic_vector(12 downto 0); -- This signal is sent from the RAM . It represents the data readed from the RAM (represent the first row in which the symbol is saved in SDRAM). 
-    --ram_out_valid 	: 		in std_logic; -- This signal is sent from the RAM .It is active when the data from the RAM is valid. ?????????????
-    --wbm_dat_i 		: 		in std_logic_vector(7 downto 0); -- the data sent from the SDARM
-    --wbm_stall_i 		: 		in std_logic; -- This signal indicates when SDRAM is not ready to transfer data to the Read Manager block.
-	--wbm_ack_i 		: 		in std_logic; -- This signal is sent from the SDARM. It is active when WBS acknowledges the read request, and the data from the SDRAM is valid.
-	--wbm_err_i 		: 		in std_logic; -- This signal is sent from the SDARM. It is active when an error occurred. 
-	req_in_trg 			: 		in std_logic; -- This is a signal from the VESA Generator block. It indicates when to start preparing valid data in the Dual Clk FIFO for a req_lines_g lines in advance. (In our case it is 1 line in advance).
-	mng_en 				: 		in std_logic; -- trigger signal from opcode_store to start the FSM
-	sdram_data 			: 		in std_logic_vector (7 downto 0); --this signal gets the data from sdram 
-	sdram_data_valid	:		in std_logic; -- indicates when the data from the sdram is valid and we can store it in one of the fifos (a or b)
-	-- fifo_a_used		:		in std_logic_vector(10 downto 0); -- fifo a used signal
-	-- fifo_a_full		:		in std_logic; -- fifo a full indication
-	fifo_a_empty		:		in std_logic; -- fifo a empty indication
-	-- fifo_b_used		:		in std_logic_vector(10 downto 0); -- fifo b used signal
-	-- fifo_b_full		:		in std_logic; -- fifo b full indication
-	fifo_b_empty		:		in std_logic; -- fifo b empty indication
+    req_in_trg 			: 		in std_logic; -- This is a signal from the VESA Generator block. It indicates when to start preparing valid data in the Dual Clk FIFO for a req_lines_g lines in advance. (In our case it is 1 line in advance).
+	  mng_en 				: 		in std_logic; -- Trigger signal from opcode_store to start the FSM
+	  sdram_data 			: 		in std_logic_vector (7 downto 0); -- This signal gets the data from sdram 
+	  sdram_data_valid	:		in std_logic; -- Indicates when the data from the sdram is valid and we can store it in one of the fifos (a or b)
+	  fifo_a_empty		:		in std_logic; -- Fifo a empty indication
+	  fifo_b_empty		:		in std_logic; -- Fifo b empty indication
+	  hor_location	    : 	 in std_logic_vector(5-1 downto 0);
+	  ver_location	    : 	 in std_logic_vector(4-1 downto 0);
     ram_rd_en_out 		: 		out std_logic; -- This signal is sent to the RAM. It is an enable signal for reading from the RAM.
     ram_addr_rd 		: 		out std_logic_vector(8 downto 0); -- This signal is sent to the RAM. It indicates the row in the RAM from which we want to read.  
-    --wbm_add_o 		: 		out std_logic_vector(9 downto 0); -- 
-    --wbm_dat_o 		: 		out std_logic_vector(7 downto 0); -- This signal is sent to the reg inside SDRAM. It represents the address we want to read from SDRAM. 
-	-- wbs_ack_o 		: 		out std_logic; Do we need it? (we wrote it in the doc, but not in the vhd...)
-    --wbm_tga_o 		: 		out std_logic_vector(9 downto 0); -- This signal is sent to the SDRAM. It represents the reading burst length. It is supposed to be the size of 3 bytes, because the data is the address in the SDRAM and its length is 3 bytes.  
-	--wbm_tgc_o 		: 		out std_logic; -- Cycle tag. '0' = indicates start of transaction to registers , '1' indicates start of transaction to component
-    --wbm_cyc_o 		: 		out std_logic; -- This signal is sent to WBM. It indicates the signal cycle required by the Wishbone protocol. 
-    --wbm_stb_o 		: 		out std_logic; -- This signal is sent to WBM. It indicates the signal strobe required by the Wishbone protocol. 
-	fifo_a_rd_en 		: 		out std_logic; -- read enable to fifo a
-	fifo_a_wr_en 		: 		out std_logic; -- write enable to fifo a
-	fifo_a_data_in 		: 		out std_logic_vector(7 downto 0); -- data in to fifo a
-	fifo_b_rd_en 		: 		out std_logic; -- read enable to fifo b
-	fifo_b_wr_en 		: 		out std_logic; -- write enable to fifo b
-	fifo_b_data_in 		: 		out std_logic_vector(7 downto 0); -- data in to fifo b
-	sdram_addr_rd 		: 		out std_logic_vector (23 downto 0); --this signal is the full address in SDRAM: "00--bank(2)--row(12)--col(8)"
-	sdram_rd_en_out		:		out std_logic -- this signal is a valid signal for the sdram_addr_rd signal (for usage of WBS)
-	--mux_sel         	: 		out std_logic -- selection of mux 
-  );
+    fifo_a_rd_en 		: 		out std_logic; -- read enable to fifo a
+	  fifo_a_wr_en 		: 		out std_logic; -- Write enable to fifo a
+	  fifo_a_data_in 		: 		out std_logic_vector(7 downto 0); -- Data in to fifo a
+	  fifo_b_rd_en 		: 		out std_logic; -- Read enable to fifo b
+	  fifo_b_wr_en 		: 		out std_logic; -- Write enable to fifo b
+	  fifo_b_data_in 		: 		out std_logic_vector(7 downto 0); -- Data in to fifo b
+	  sdram_addr_rd 		: 		out std_logic_vector (23 downto 0); -- This signal is the full address in SDRAM: "00--bank(2)--row(12)--col(8)"
+	  sdram_rd_en_out		:		out std_logic -- this signal is a valid signal for the sdram_addr_rd signal (for usage of WBS)
+	);
 end entity manager;
 
 architecture manager_rtl of manager is
@@ -107,25 +97,24 @@ architecture manager_rtl of manager is
 	---------------------------- signals ---------------------------------------------
 	type state_t is (idle_st, write_a_st, read_b_st, write_a_read_b_st, read_a_write_b_st ); -- enum type for fsm states
 	signal current_sm 			: 	state_t;
-	--signal sdram_data 		: 	std_logic_vector (7 downto 0); 				--this signal gets the data from sdram 
-	signal row_count			: 	integer range 0 to ver_active_lines_g+1000; 			--counts current row of video frame
-	signal sym_row 				: 	integer range 0 to sym_row_g;  			--the row in terms of symbols
-	signal sym_col 				: 	integer range 0 to sym_col_g+1;  			--the col in terms of symbols
-	signal sym_col_i 			: 	integer range 0 to sym_col_g+1;  			--the col in terms of symbols
-	signal inside_row 			: 	integer range 0 to inside_row_g+1;  			--the row inside the current symbol
+	signal row_count			: 	integer range 0 to ver_active_lines_g+1000; 			-- Counts current row of video frame
+	signal sym_row 				: 	integer range 0 to sym_row_g;  			-- The row in terms of symbols
+	signal sym_col 				: 	integer range 0 to sym_col_g+1;  			-- The col in terms of symbols
+	signal sym_col_i 			: 	integer range 0 to sym_col_g+1;  			-- The col in terms of symbols
+	signal inside_row 			: 	integer range 0 to inside_row_g+1;  			-- The row inside the current symbol
 	signal ram_rd_en  			: 	std_logic; -- This signal is sent to the RAM. It is an enable signal for reading from the RAM.
-	signal ram_rd_en_i  		: 	std_logic; -- smapling ram_rd_en output port
-	--signal sdram_adr 			: 	std_logic_vector (23 downto 0); --this signal is the full address in SDRAM: "00--bank(2)--row(12)--col(8)"
-	signal sdram_rd_en			: 	std_logic; -- this signal is a valid signal for the sdram_addr_rd signal (for usage of WBS)
+	signal ram_rd_en_i  		: 	std_logic; -- Samapling ram_rd_en output port
+	-- Signal sdram_adr 			: 	std_logic_vector (23 downto 0); --this signal is the full address in SDRAM: "00--bank(2)--row(12)--col(8)"
+	signal sdram_rd_en			: 	std_logic; -- This signal is a valid signal for the sdram_addr_rd signal (for usage of WBS)
 	signal sdram_wait_counter	:	integer range 0 to 150;
 	signal sdram_wait_counter_tmp	:	integer range 0 to 150;
 	signal sdram_wait_count_en	: 	std_logic;
 	signal sdram_ready			: 	std_logic;
 	
 	signal req_in_trg_dev   	: std_logic; -- The derivative of req_in_trg (change from 0 to 1)
-	signal req_in_trg_1 		: std_logic; -- sampling req_in_trg input
-	signal req_in_trg_2 		: std_logic; -- sampling req_in_trg input
-	signal req_in_trg_3 		: std_logic; -- sampling req_in_trg input
+	signal req_in_trg_1 		: std_logic; -- Sampling req_in_trg input
+	signal req_in_trg_2 		: std_logic; -- Sampling req_in_trg input
+	signal req_in_trg_3 		: std_logic; -- Sampling req_in_trg input
 	signal req_in_trg_counter	: integer := 0 ;
 	signal req_in_trg_dev_active   	: std_logic; 
 	
@@ -135,6 +124,7 @@ architecture manager_rtl of manager is
 	signal mng_en_internal : std_logic;
 	signal req_cnt_small : std_logic;
 	signal req_cnt_small_d : std_logic;
+	signal sdram_mux_out : std_logic_vector (7 downto 0); -- This signal gets the data from sdram 
 	
 	---------------------------- constatnts -------------------------------------------
 	-- constant const_19_c  	: integer := 19; 
@@ -143,7 +133,9 @@ architecture manager_rtl of manager is
 	-- constant const_16_c  	: integer := 16;
 	-- constant const_480_c 	: integer := 479;
 	constant sdram_wait_c	: integer := 100; 	-- num. of clock to wait from one sdram request to another ( approx. 20 clks for SDRAM to respond + 32 pixels to deliver )
-	
+	constant x	: integer := 2; 
+	constant y	: integer := 2; 
+
 	-- not sure what it is:
   -- signal counter : unsigned(9 downto 0);
   -- signal start_trigger : std_logic; -- The derivative of op_str_rd_start which connected to vsync (we check when it changes from 0 to 1) 
@@ -188,7 +180,7 @@ begin
 	end process;
 	
 	
-	-- count num of re_in_trig in one frame
+	-- count num of req_in_trig in one frame
 	req_count: process (clk, reset_n)
 	begin
 		if reset_n='0' then
@@ -261,7 +253,7 @@ begin
 				when write_a_st =>
 					fifo_a_rd_en <='0';
 					if ( sdram_data_valid='1' ) then
-						fifo_a_data_in <= sdram_data;
+						fifo_a_data_in <= sdram_mux_out;
 						fifo_a_wr_en <='1';
 					else
 						fifo_a_data_in <= (others =>'0');
@@ -284,7 +276,7 @@ begin
 					fifo_a_data_in <= (others =>'0');
 					fifo_b_rd_en <='0';
 					if ( sdram_data_valid='1' ) then
-						fifo_b_data_in <= sdram_data;	
+						fifo_b_data_in <= sdram_mux_out;	
 						fifo_b_wr_en <='1';
 					else
 						fifo_b_data_in <= (others =>'0');
@@ -299,7 +291,7 @@ begin
 				when write_a_read_b_st =>
 					fifo_a_rd_en <='0';
 					if ( sdram_data_valid='1' ) then
-						fifo_a_data_in <= sdram_data;
+						fifo_a_data_in <= sdram_mux_out;
 						fifo_a_wr_en <='1';
 					else
 						fifo_a_data_in <= (others =>'0');
@@ -399,7 +391,7 @@ begin
 			row_count <= 0;
 		elsif rising_edge (clk) then
 			if (current_sm = read_b_st) then
-				sym_row <= 0;
+				sym_row<= 0;
 				sym_col <= 0;
 				sym_col_i <= 0;
 				inside_row <= 0;
@@ -437,6 +429,21 @@ begin
 	
 	sdram_rd_en_out <= sdram_rd_en;
 	
+---------------------------------------------------------------------------------
+	----------------------------- Process sym_inversion-------------------------
+	---------------------------------------------------------------------------------
+	-- invert the symbol if sym_row=hor_location and sym_col=ver_location
+	---------------------------------------------------------------------------------
+	sym_inversion_proc: process (clk, sym_row, sym_col)
+	begin
+		if rising_edge (clk) then
+			if ((sym_row) = to_integer(unsigned(ver_location)) and (sym_col) = (to_integer(unsigned(hor_location))+1)) then 
+				sdram_mux_out <= not(sdram_data);
+			else 
+				sdram_mux_out <= sdram_data;
+			end if;	
+		end if;
+	end process sym_inversion_proc;
 	---------------------------------------------------------------------------------
 	----------------------------- Process ram_adr_proc	-------------------------
 	---------------------------------------------------------------------------------
