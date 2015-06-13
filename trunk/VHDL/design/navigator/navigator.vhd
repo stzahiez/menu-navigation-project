@@ -27,9 +27,9 @@ use ieee.numeric_std.all; -- For to_unsigned() function
 
 entity navigator is
   generic(
-    hor_width_g  : 		positive	:= 5; 	-- the width of horizonal output lines, needed to hold the maximum horizontal location value.
-    ver_width_g  : 		positive	:= 4; 	-- the width of vertical output lines, needed to hold the maximum vertical location value.
-    reset_polarity_g  : std_logic := '1';  -- the reset polarity of the system.
+    hor_width_g  : 		positive	:= 5; 	-- The width of horizonal output lines, needed to hold the maximum horizontal location value.
+    ver_width_g  : 		positive	:= 4; 	-- The width of vertical output lines, needed to hold the maximum vertical location value.
+    reset_polarity_g  : std_logic := '1';  -- The reset polarity of the system.
     hor_max_value_g  : 		positive	:= 19; 	-- The maximum horizontal location value.
     ver_max_value_g  : 		positive	:= 14; 	-- The  maximum vertical location value.
     max_value_g  : 		positive	:= 50000000 -- The number of clk cycles to wait, before output a rectangular Pulse in width of one cycle.
