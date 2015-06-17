@@ -12,8 +12,8 @@
 --			1.00		04.05.2012		Olga Liberman and Yoav Shvartz		Creation
 --			1.01		27.10.2012		Olga Liberman						Symbol Generator inner blocks are encapsulated in the Symbol_Generator_Top block
 --			1.02		28.10.2012		Olga Liberman						the top TB file has now all the generics of the design
---    1.03  08.06.2015  Tzahi Ezra         Adding the navigator component & the updated manager compnent to the TB, and also the DE2 buttons inputs
---                                         To the Symbol_Generator_Top component
+--    1.03  08.06.2015  Tzahi Ezra         Adding the navigator component & the updated manager component to the TB, and also the DE2 buttons inputs
+--                                         To the Symbol_Generator_Top component, and adding a process: direction_press_proc, for simulating randomized button presses.
 ------------------------------------------------------------------------------------------------
 --	Todo:
 --	(1)
