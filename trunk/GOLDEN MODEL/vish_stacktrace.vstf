@@ -1,0 +1,184 @@
+# Current time Mon Jun 29 03:15:02 2015
+# ModelSim Stack Trace
+# Program = vish
+# Id = "10.2a"
+# Version = "2013.03"
+# Date = "Mar 15 2013"
+# Platform = win64
+
+Exception c0000005 has occurred at address 743dec27. Traceback:
+# 0    0x743dec27: 'strcoll + 0x27'
+# 1    0x743ded7b: 'stricmp + 0x43'
+# 2    0x400a215f: '<unknown (@0x400a215f)>'
+# 3    0x400cfe47: '<unknown (@0x400cfe47)>'
+# 4    0x400a32b8: '<unknown (@0x400a32b8)>'
+# 5    0x400a8dbf: '<unknown (@0x400a8dbf)>'
+# 6    0x400973aa: '<unknown (@0x400973aa)>'
+# 7    0x100111ef: 'Tcl_ListMathFuncs + 0x58f'
+# 8    0x07104288: '<unknown (@0x7104288)>'
+# 9    0x071042a0: '<unknown (@0x71042a0)>'
+StackWalk failed 487
+# End of Stack Trace
+
+# Current time Mon Jun 29 03:18:07 2015
+# ModelSim Stack Trace
+# Program = vish
+# Id = "10.2a"
+# Version = "2013.03"
+# Date = "Mar 15 2013"
+# Platform = win64
+
+Exception c0000005 has occurred at address 400a0bc6. Traceback:
+# 0    0x400a0bc6: '<unknown (@0x400a0bc6)>'
+# 1    0x400a5969: '<unknown (@0x400a5969)>'
+# 2    0xf8032548: '<unknown (@0xf8032548)>'
+# 3    0x000001a7: '<unknown (@0x1a7)>'
+# 4    0x00000001: '<unknown (@0x1)>'
+# 5    0x06c23000: '<unknown (@0x6c23000)>'
+# 6    0x00000060: '<unknown (@0x60)>'
+# 7    0x00000060: '<unknown (@0x60)>'
+# 8    0x00000000: '<unknown (@0x0)>'
+# 9    0x00000001: '<unknown (@0x1)>'
+# 10   0x00000000: '<unknown (@0x0)>'
+# 11   0x558ab339: '<unknown (@0x558ab339)>'
+# 12   0x55905029: '<unknown (@0x55905029)>'
+# 13   0x558ab339: '<unknown (@0x558ab339)>'
+# 14   0x4009e1cf: '<unknown (@0x4009e1cf)>'
+# 15   0x4009e12f: '<unknown (@0x4009e12f)>'
+StackWalk failed 487
+# End of Stack Trace
+
+# Current time Mon Jun 29 03:20:44 2015
+# ModelSim Stack Trace
+# Program = vish
+# Id = "10.2a"
+# Version = "2013.03"
+# Date = "Mar 15 2013"
+# Platform = win64
+
+Exception c0000005 has occurred at address 400a0bc6. Traceback:
+# 0    0x400a0bc6: '<unknown (@0x400a0bc6)>'
+# 1    0x400a5969: '<unknown (@0x400a5969)>'
+# 2    0xf8032548: '<unknown (@0xf8032548)>'
+# 3    0x000001a7: '<unknown (@0x1a7)>'
+# 4    0x00000001: '<unknown (@0x1)>'
+# 5    0x06f13000: '<unknown (@0x6f13000)>'
+# 6    0x00000060: '<unknown (@0x60)>'
+# 7    0x00000060: '<unknown (@0x60)>'
+# 8    0x00000000: '<unknown (@0x0)>'
+# 9    0x00000001: '<unknown (@0x1)>'
+# 10   0x00000000: '<unknown (@0x0)>'
+# 11   0x558ab339: '<unknown (@0x558ab339)>'
+# 12   0x55905029: '<unknown (@0x55905029)>'
+# 13   0x558ab339: '<unknown (@0x558ab339)>'
+# 14   0x4009e1cf: '<unknown (@0x4009e1cf)>'
+# 15   0x4009e12f: '<unknown (@0x4009e12f)>'
+StackWalk failed 487
+# End of Stack Trace
+
+# Current time Mon Jun 29 03:22:22 2015
+# ModelSim Stack Trace
+# Program = vish
+# Id = "10.2a"
+# Version = "2013.03"
+# Date = "Mar 15 2013"
+# Platform = win64
+
+Exception c0000005 has occurred at address 400a0bc6. Traceback:
+# 0    0x400a0bc6: '<unknown (@0x400a0bc6)>'
+# 1    0x400a5969: '<unknown (@0x400a5969)>'
+# 2    0xf8032548: '<unknown (@0xf8032548)>'
+# 3    0x000001a7: '<unknown (@0x1a7)>'
+# 4    0x00000001: '<unknown (@0x1)>'
+# 5    0x07083000: '<unknown (@0x7083000)>'
+# 6    0x00000060: '<unknown (@0x60)>'
+# 7    0x00000060: '<unknown (@0x60)>'
+# 8    0x00000000: '<unknown (@0x0)>'
+# 9    0x00000001: '<unknown (@0x1)>'
+# 10   0x00000000: '<unknown (@0x0)>'
+# 11   0x558ab339: '<unknown (@0x558ab339)>'
+# 12   0x55905029: '<unknown (@0x55905029)>'
+# 13   0x558ab339: '<unknown (@0x558ab339)>'
+# 14   0x4009e1cf: '<unknown (@0x4009e1cf)>'
+# 15   0x4009e12f: '<unknown (@0x4009e12f)>'
+StackWalk failed 487
+# End of Stack Trace
+
+# Current time Mon Jun 29 03:23:30 2015
+# ModelSim Stack Trace
+# Program = vish
+# Id = "10.2a"
+# Version = "2013.03"
+# Date = "Mar 15 2013"
+# Platform = win64
+
+Exception c0000005 has occurred at address 400a0bc6. Traceback:
+# 0    0x400a0bc6: '<unknown (@0x400a0bc6)>'
+# 1    0x400a5969: '<unknown (@0x400a5969)>'
+# 2    0xf8032548: '<unknown (@0xf8032548)>'
+# 3    0x000001a7: '<unknown (@0x1a7)>'
+# 4    0x00000001: '<unknown (@0x1)>'
+# 5    0x07547d60: '<unknown (@0x7547d60)>'
+# 6    0x00000060: '<unknown (@0x60)>'
+# 7    0x00000060: '<unknown (@0x60)>'
+# 8    0x00000000: '<unknown (@0x0)>'
+# 9    0x00000001: '<unknown (@0x1)>'
+# 10   0x00000000: '<unknown (@0x0)>'
+# 11   0x558ab339: '<unknown (@0x558ab339)>'
+# 12   0x55905029: '<unknown (@0x55905029)>'
+# 13   0x558ab339: '<unknown (@0x558ab339)>'
+# 14   0x4009e1cf: '<unknown (@0x4009e1cf)>'
+# 15   0x4009e12f: '<unknown (@0x4009e12f)>'
+StackWalk failed 487
+# End of Stack Trace
+
+# Current time Mon Jun 29 03:25:55 2015
+# ModelSim Stack Trace
+# Program = vish
+# Id = "10.2a"
+# Version = "2013.03"
+# Date = "Mar 15 2013"
+# Platform = win64
+
+Exception c0000005 has occurred at address 743dec27. Traceback:
+# 0    0x743dec27: 'strcoll + 0x27'
+# 1    0x743ded7b: 'stricmp + 0x43'
+# 2    0x400a215f: '<unknown (@0x400a215f)>'
+# 3    0x400cfe47: '<unknown (@0x400cfe47)>'
+# 4    0x400a32b8: '<unknown (@0x400a32b8)>'
+# 5    0x400a8dbf: '<unknown (@0x400a8dbf)>'
+# 6    0x400973aa: '<unknown (@0x400973aa)>'
+# 7    0x100111ef: 'Tcl_ListMathFuncs + 0x58f'
+# 8    0x07af26e8: '<unknown (@0x7af26e8)>'
+# 9    0x07af2700: '<unknown (@0x7af2700)>'
+StackWalk failed 487
+# End of Stack Trace
+
+# Current time Mon Jun 29 03:27:53 2015
+# ModelSim Stack Trace
+# Program = vish
+# Id = "10.2a"
+# Version = "2013.03"
+# Date = "Mar 15 2013"
+# Platform = win64
+
+Exception c0000005 has occurred at address 400a0bc6. Traceback:
+# 0    0x400a0bc6: '<unknown (@0x400a0bc6)>'
+# 1    0x400a5969: '<unknown (@0x400a5969)>'
+# 2    0xf8032548: '<unknown (@0xf8032548)>'
+# 3    0x000001a7: '<unknown (@0x1a7)>'
+# 4    0x00000001: '<unknown (@0x1)>'
+# 5    0x06ba3000: '<unknown (@0x6ba3000)>'
+# 6    0x00000060: '<unknown (@0x60)>'
+# 7    0x00000060: '<unknown (@0x60)>'
+# 8    0x00000000: '<unknown (@0x0)>'
+# 9    0x00000001: '<unknown (@0x1)>'
+# 10   0x00000000: '<unknown (@0x0)>'
+# 11   0x558ab339: '<unknown (@0x558ab339)>'
+# 12   0x55905029: '<unknown (@0x55905029)>'
+# 13   0x558ab339: '<unknown (@0x558ab339)>'
+# 14   0x4009e1cf: '<unknown (@0x4009e1cf)>'
+# 15   0x4009e12f: '<unknown (@0x4009e12f)>'
+StackWalk failed 487
+# End of Stack Trace
+
