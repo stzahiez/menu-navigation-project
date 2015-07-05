@@ -1,0 +1,28 @@
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.x_y_location(x_y_location_rtl){generic map (hor_width_g => 5 ver_width_g => 4 reset_polarity_g => 0 hor_max_value_g => 19 ver_max_value_g => 14)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 9
+Primary State Variable          : curr_sm[8:0]
+Async set/reset state(s)        : 000100000 
+Re-encoding Scheme              : ONEHOT 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                      upper_left_st	                          000100000	                     000000001
+FSM:	    1	                     upper_right_st	                          000010000	                     000000010
+FSM:	    2	                     lower_right_st	                          001000000	                     000000100
+FSM:	    3	                      lower_left_st	                          010000000	                     000001000
+FSM:	    4	                           upper_st	                          000000100	                     000010000
+FSM:	    5	                           right_st	                          000000001	                     000100000
+FSM:	    6	                           lower_st	                          000001000	                     001000000
+FSM:	    7	                            left_st	                          000000010	                     010000000
+FSM:	    8	                           inner_st	                          100000000	                     100000000
+
+
+

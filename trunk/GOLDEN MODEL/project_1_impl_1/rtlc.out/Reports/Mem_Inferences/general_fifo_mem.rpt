@@ -1,0 +1,11 @@
+Inferred RAM
+------------
+  1. Instance: rtlcgeneral_fifo_mem_375_n5
+    File: P:/Menu_Navigation_Projectwc/trunk/GOLDEN MODEL/general_fifo.vhd , Net: mem, Type: single port
+    port 1  write
+    port 1  address width: 4
+    port 1  data width: 8
+    port 2  read
+    port 2  address width: 4
+    port 2  data width: 8
+

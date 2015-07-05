@@ -1,0 +1,492 @@
+//Precision RTL Plus  2014a.1_64-bit (Production Release) Mon Feb 24 02:39:08 PST 2014
+//
+//Copyright (c) Mentor Graphics Corporation, 1996-2014, All Rights Reserved.
+//           Portions copyright 1991-2008 Compuware Corporation
+//                     UNPUBLISHED, LICENSED SOFTWARE.
+//          CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+//        PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+//
+//Running on Windows 7 stzahiez@DIGLAB-08 Service Pack 1 6.01.7601 
+//
+
+                                =======================                         
+                                Precision 2014a.1_64-bit                         
+                                =======================                         
+
+
+
+                                FSM EXTRACTION ANALYSIS                         
+                                =======================                         
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.rx_path(rtl_rx_path){generic map (reset_polarity_g => 0 len_dec1_g => true sof_d_g => 1 type_d_g => 1 addr_d_g => 2 len_d_g => 2 crc_d_g => 1 eof_d_g => 1 sof_val_g => 100 eof_val_g => 200 ...)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 6
+Primary State Variable          : wbm_cur_st[5:0]
+Async set/reset state(s)        : 000001 
+Re-encoding Scheme              : ONEHOT 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                        wbm_idle_st	                             000001	                        000001
+FSM:	    1	                         wbm_neg_st	                             000010	                        000010
+FSM:	    2	                          wbm_tx_st	                             000100	                        000100
+FSM:	    3	                  wbm_wait_burst_st	                             001000	                        001000
+FSM:	    4	                     wbm_tx_type_st	                             010000	                        010000
+FSM:	    5	                   wbm_wait_type_st	                             100000	                        100000
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.synthetic_frame_generator(rtl_synthetic_frame_generator){generic map (reset_polarity_g => 0 hsync_polarity_g => 1 vsync_polarity_g => 1 change_frame_clk_g => 120000000 hor_pres_pixels_g => 640 ...)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 5
+Primary State Variable          : frame_state[2:0]
+Async set/reset state(s)        : 000 
+Re-encoding Scheme              : ONEHOT 
+FSM: Info, state encoding table:
+FSM:	Index	                            Literal	                      Encoding
+FSM:	    0	                                000	                         00001
+FSM:	    1	                                001	                         00010
+FSM:	    2	                                010	                         00100
+FSM:	    3	                                011	                         01000
+FSM:	    4	                                100	                         10000
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.manager(manager_rtl){generic map (sym_row_g => 15 sym_col_g => 20 inside_row_g => 32 sdram_burst_g => 16 hor_active_pixels_g => 640 ver_active_lines_g => 480 hor_left_border_g => 0 ...)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 5
+Primary State Variable          : current_sm[4:0]
+Async set/reset state(s)        : 00001 
+Re-encoding Scheme              : ONEHOT 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                            idle_st	                              00001	                         00001
+FSM:	    1	                         write_a_st	                              00010	                         00010
+FSM:	    2	                  read_a_write_b_st	                              10000	                         00100
+FSM:	    3	                  write_a_read_b_st	                              01000	                         01000
+FSM:	    4	                          read_b_st	                              00100	                         10000
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.mem_ctrl_rd_wbm(rtl_mem_ctrl_rd_wbm){generic map (reset_polarity_g => 0 mode_g => 0 img_hor_pixels_g => 640 img_ver_lines_g => 480)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 5
+Primary State Variable          : wbm_cur_st[4:0]
+Async set/reset state(s)        : 00001 
+Re-encoding Scheme              : ONEHOT 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                        wbm_idle_st	                              00001	                         00001
+FSM:	    1	                     wbm_req_arb_st	                              00010	                         00010
+FSM:	    2	                          wbm_rx_st	                              00100	                         00100
+FSM:	    3	                  wbm_wait_burst_st	                              01000	                         01000
+FSM:	    4	                        wbm_bank_st	                              10000	                         10000
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.mem_ctrl_rd_wbs(rtl_mem_ctrl_rd_wbs){generic map (reset_polarity_g => 0)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 7
+Primary State Variable          : wbs_cur_st[6:0]
+Async set/reset state(s)        : 0000001 
+Re-encoding Scheme              : ONEHOT 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                        wbs_idle_st	                            0000001	                       0000001
+FSM:	    1	               wbs_init_sdram_rx_st	                            0000010	                       0000010
+FSM:	    2	                wbs_wait_ram_rdy_st	                            0000100	                       0000100
+FSM:	    3	                   wbs_ram_delay_st	                            0001000	                       0001000
+FSM:	    4	                          wbs_tx_st	                            0010000	                       0010000
+FSM:	    5	                wbs_wait_end_cyc_st	                            0100000	                       0100000
+FSM:	    6	                        wbs_done_st	                            1000000	                       1000000
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.mem_ctrl_wr_wbm(rtl_mem_ctrl_wr_wbm){generic map (reset_polarity_g => 0 mode_g => 0 message_g => 1 img_hor_pixels_g => 640 img_ver_lines_g => 480)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 2
+
+1.
+--------------------------------------------------
+Number of States                : 10
+Primary State Variable          : wbm_cur_st[9:0]
+Async set/reset state(s)        : 0000000001 
+Re-encoding Scheme              : ONEHOT 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                        wbm_idle_st	                         0000000001	                    0000000001
+FSM:	    1	                     wbm_req_arb_st	                         0000000010	                    0000000010
+FSM:	    2	                          wbm_tx_st	                         0000000100	                    0000000100
+FSM:	    3	                  wbm_wait_burst_st	                         0000001000	                    0000001000
+FSM:	    4	                    wbm_wait_sum_st	                         0100000000	                    0000010000
+FSM:	    5	                         wbm_sum_st	                         1000000000	                    0000100000
+FSM:	    6	                 wbm_bank_switch_st	                         0001000000	                    0001000000
+FSM:	    7	                 wbm_wait_switch_st	                         0000010000	                    0010000000
+FSM:	    8	                wbm_wait2_switch_st	                         0000100000	                    0100000000
+FSM:	    9	                        wbm_bank_st	                         0010000000	                    1000000000
+
+
+
+
+2.
+--------------------------------------------------
+Number of States                : 3
+Primary State Variable          : inc_sum_wr_cnt[1:0]
+Async set/reset state(s)        : 00 
+Encoding Scheme: Preserving User Encoding
+FSM: Info, state encoding table:
+FSM:	Index	                            Literal	                      Encoding
+FSM:	    0	                                 01	                            01
+FSM:	    1	                                 10	                            10
+FSM:	    2	                                 00	                            00
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.mem_ctrl_wr_wbs(rtl_mem_ctrl_wr_wbs){generic map (reset_polarity_g => 0)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 5
+Primary State Variable          : wbs_cur_st[4:0]
+Async set/reset state(s)        : 00001 
+Re-encoding Scheme              : ONEHOT 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                        wbs_idle_st	                              00001	                         00001
+FSM:	    1	                   wbs_neg_stall_st	                              00010	                         00010
+FSM:	    2	                          wbs_rx_st	                              00100	                         00100
+FSM:	    3	                wbs_wait_end_cyc_st	                              01000	                         01000
+FSM:	    4	                        wbs_done_st	                              10000	                         10000
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.mp_dec(rtl_mp_dec){generic map (reset_polarity_g => 0 len_dec1_g => true sof_d_g => 1 type_d_g => 1 addr_d_g => 2 len_d_g => 2 crc_d_g => 1 eof_d_g => 1 sof_val_g => 100 eof_val_g => 200 width_g => 8)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 7
+Primary State Variable          : cur_st[6:0]
+Async set/reset state(s)        : 0000001 
+Re-encoding Scheme              : ONEHOT 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                             sof_st	                            0000001	                       0000001
+FSM:	    1	                            type_st	                            0000010	                       0000010
+FSM:	    2	                            addr_st	                            0000100	                       0000100
+FSM:	    3	                             len_st	                            0001000	                       0001000
+FSM:	    4	                            data_st	                            0010000	                       0010000
+FSM:	    5	                             crc_st	                            0100000	                       0100000
+FSM:	    6	                             eof_st	                            1000000	                       1000000
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.mp_enc(rtl_mp_enc){generic map (reset_polarity_g => 0 len_dec1_g => true sof_d_g => 1 type_d_g => 1 addr_d_g => 1 len_d_g => 2 crc_d_g => 1 eof_d_g => 1 sof_val_g => 100 eof_val_g => 200 width_g => 8)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 9
+Primary State Variable          : cur_st[8:0]
+Async set/reset state(s)        : 000000001 
+Re-encoding Scheme              : ONEHOT 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                            idle_st	                          000000001	                     000000001
+FSM:	    1	                             sof_st	                          000000010	                     000000010
+FSM:	    2	                            type_st	                          000000100	                     000000100
+FSM:	    3	                            addr_st	                          000001000	                     000001000
+FSM:	    4	                             len_st	                          000010000	                     000010000
+FSM:	    5	                            data_st	                          000100000	                     000100000
+FSM:	    6	                         reg_crc_st	                          001000000	                     001000000
+FSM:	    7	                             crc_st	                          010000000	                     010000000
+FSM:	    8	                             eof_st	                          100000000	                     100000000
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.opcode_unite(opcode_unite_rtl)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 3
+Primary State Variable          : current_sm[1:0]
+Async set/reset state(s)        : 00 
+Encoding Scheme: Preserving User Encoding
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                            idle_st	                                 00	                            00
+FSM:	    1	                             mp1_st	                                 01	                            01
+FSM:	    2	                             mp2_st	                                 10	                            10
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.pixel_mng(rtl_pixel_mng){generic map (reset_polarity_g => 0 vsync_polarity_g => 1 screen_hor_pix_g => 800 hor_pixels_g => 640 ver_lines_g => 480 req_lines_g => 1)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 6
+Primary State Variable          : cur_st[5:0]
+Async set/reset state(s)        : 000001 
+Re-encoding Scheme              : ONEHOT 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                        wbm_idle_st	                             000001	                        000001
+FSM:	    1	                     wbm_init_rx_st	                             000010	                        000010
+FSM:	    2	                          wbm_rx_st	                             000100	                        000100
+FSM:	    3	                         end_cyc_st	                             001000	                        001000
+FSM:	    4	                      restart_rd_st	                             010000	                        010000
+FSM:	    5	                    restart_wack_st	                             100000	                        100000
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.sdram_controller(rtl_sdram_controller){generic map (reset_polarity_g => 0)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 2
+
+1.
+--------------------------------------------------
+Number of States                : 16
+Primary State Variable          : current_state[15:0]
+Other State Variable(s)         : 1) next_state[15:0]
+Async set/reset state(s)        : 0000000000000001 
+Re-encoding Scheme              : ONEHOT 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                            IDLE_ST	                   0000000000000001	              0000000000000001
+FSM:	    1	                         REFRESH_ST	                   0000000000000010	              0000000000000010
+FSM:	    2	                    REFRESH_WAIT_ST	                   0000000000000100	              0000000000000100
+FSM:	    3	                             ACT_ST	                   0000000000001000	              0000000000001000
+FSM:	    4	                        WAIT_ACT_ST	                   0000000000010000	              0000000000010000
+FSM:	    5	                          WRITE0_ST	                   0000000000100000	              0000000000100000
+FSM:	    6	                          WRITE1_ST	                   0000000001000000	              0000000001000000
+FSM:	    7	                  WRITE_BST_STOP_ST	                   0000000010000000	              0000000010000000
+FSM:	    8	                           READ0_ST	                   0000000100000000	              0000000100000000
+FSM:	    9	                           READ1_ST	                   0000001000000000	              0000001000000000
+FSM:	   10	                           READ2_ST	                   0000010000000000	              0000010000000000
+FSM:	   11	                           READ3_ST	                   0000100000000000	              0000100000000000
+FSM:	   12	                           READ4_ST	                   0001000000000000	              0001000000000000
+FSM:	   13	                           READ5_ST	                   0010000000000000	              0010000000000000
+FSM:	   14	                   READ_BST_STOP_ST	                   0100000000000000	              0100000000000000
+FSM:	   15	                        WAIT_PRE_ST	                   1000000000000000	              1000000000000000
+
+
+
+
+2.
+--------------------------------------------------
+Number of States                : 8
+Primary State Variable          : current_init_state[7:0]
+Other State Variable(s)         : 1) next_init_state[7:0]
+Async set/reset state(s)        : 00000001 
+Re-encoding Scheme              : ONEHOT 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                       INIT_IDLE_ST	                           00000001	                      00000001
+FSM:	    1	                 INIT_WAIT_200us_ST	                           00000010	                      00000010
+FSM:	    2	                  INIT_PRECHARGE_ST	                           00000100	                      00000100
+FSM:	    3	                   INIT_WAIT_PRE_ST	                           00001000	                      00001000
+FSM:	    4	                   INIT_AUTO_REF_ST	                           00010000	                      00010000
+FSM:	    5	              INIT_AUTO_REF_WAIT_ST	                           00100000	                      00100000
+FSM:	    6	                   INIT_MODE_REG_ST	                           01000000	                      01000000
+FSM:	    7	              INIT_WAIT_MODE_REG_ST	                           10000000	                      10000000
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.SG_WBM_IF(rtl_SG_WBM_IF){generic map (read_length_g => 32)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 10
+Primary State Variable          : cur_st[10:0]
+Async set/reset state(s)        : 00000000001 
+Re-encoding Scheme              : ONEHOT 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                        wbm_idle_st	                        00000000001	                    0000000001
+FSM:	    1	                     wbm_dbg_adr_st	                        00000000010	                    0000000010
+FSM:	    2	             wbm_dbg_adr_end_cyc_st	                        00000000100	                    0000000100
+FSM:	    3	                    wbm_dbg_type_st	                        00000001000	                    0000001000
+FSM:	    4	            wbm_dbg_type_end_cyc_st	                        00000010000	                    0000010000
+FSM:	    5	                     wbm_init_rx_st	                        00000100000	                    0000100000
+FSM:	    6	                          wbm_rx_st	                        00001000000	                    0001000000
+FSM:	    7	                         end_cyc_st	                        00010000000	                    0010000000
+FSM:	    8	                  wbm_undbg_type_st	                        00100000000	                    0100000000
+FSM:	    9	          wbm_undbg_type_end_cyc_st	                        01000000000	                    1000000000
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.tx_path_wbm(rtl_tx_path_wbm){generic map (reset_polarity_g => 0 data_width_g => 8 addr_width_g => 10)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 3
+Primary State Variable          : wbm_cur_st[1:0]
+Async set/reset state(s)        : 00 
+Encoding Scheme: Preserving User Encoding
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                        wbm_idle_st	                                 00	                            00
+FSM:	    1	                          wbm_rx_st	                                 01	                            01
+FSM:	    2	                  wbm_wait_burst_st	                                 10	                            10
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.uart_rx(arc_uart_rx){generic map (parity_en_g => 0 parity_odd_g => false uart_idle_g => 1 baudrate_g => 115200 clkrate_g => 100000000 databits_g => 8 reset_polarity_g => 0)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 4
+Primary State Variable          : cur_st[4:0]
+Unreachable state(s)            : 1) 01000
+Async set/reset state(s)        : 00001 
+Re-encoding Scheme              : BINARY 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                            IDLE_ST	                              00001	                            00
+FSM:	    1	                        STARTBIT_ST	                              00010	                            01
+FSM:	    2	                              RX_ST	                              00100	                            10
+FSM:	    3	                         STOPBIT_ST	                              10000	                            11
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.uart_tx(arc_uart_tx){generic map (parity_en_g => 1 parity_odd_g => false uart_idle_g => 1 baudrate_g => 115200 clkrate_g => 100000000 databits_g => 8 reset_polarity_g => 0)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 3
+Primary State Variable          : cur_st[1:0]
+Async set/reset state(s)        : 00 
+Encoding Scheme: Preserving User Encoding
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                            IDLE_ST	                                 00	                            00
+FSM:	    1	                         REGDATA_ST	                                 01	                            01
+FSM:	    2	                              TX_ST	                                 10	                            10
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.x_y_location(x_y_location_rtl){generic map (hor_width_g => 5 ver_width_g => 4 reset_polarity_g => 0 hor_max_value_g => 19 ver_max_value_g => 14)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 9
+Primary State Variable          : curr_sm[8:0]
+Async set/reset state(s)        : 000100000 
+Re-encoding Scheme              : ONEHOT 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                      upper_left_st	                          000100000	                     000000001
+FSM:	    1	                     upper_right_st	                          000010000	                     000000010
+FSM:	    2	                     lower_right_st	                          001000000	                     000000100
+FSM:	    3	                      lower_left_st	                          010000000	                     000001000
+FSM:	    4	                           upper_st	                          000000100	                     000010000
+FSM:	    5	                           right_st	                          000000001	                     000100000
+FSM:	    6	                           lower_st	                          000001000	                     001000000
+FSM:	    7	                            left_st	                          000000010	                     010000000
+FSM:	    8	                           inner_st	                          100000000	                     100000000
+
+
+

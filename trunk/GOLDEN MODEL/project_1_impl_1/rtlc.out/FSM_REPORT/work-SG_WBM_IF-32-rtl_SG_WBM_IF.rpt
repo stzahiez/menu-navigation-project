@@ -1,0 +1,29 @@
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.SG_WBM_IF(rtl_SG_WBM_IF){generic map (read_length_g => 32)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 10
+Primary State Variable          : cur_st[10:0]
+Async set/reset state(s)        : 00000000001 
+Re-encoding Scheme              : ONEHOT 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                        wbm_idle_st	                        00000000001	                    0000000001
+FSM:	    1	                     wbm_dbg_adr_st	                        00000000010	                    0000000010
+FSM:	    2	             wbm_dbg_adr_end_cyc_st	                        00000000100	                    0000000100
+FSM:	    3	                    wbm_dbg_type_st	                        00000001000	                    0000001000
+FSM:	    4	            wbm_dbg_type_end_cyc_st	                        00000010000	                    0000010000
+FSM:	    5	                     wbm_init_rx_st	                        00000100000	                    0000100000
+FSM:	    6	                          wbm_rx_st	                        00001000000	                    0001000000
+FSM:	    7	                         end_cyc_st	                        00010000000	                    0010000000
+FSM:	    8	                  wbm_undbg_type_st	                        00100000000	                    0100000000
+FSM:	    9	          wbm_undbg_type_end_cyc_st	                        01000000000	                    1000000000
+
+
+

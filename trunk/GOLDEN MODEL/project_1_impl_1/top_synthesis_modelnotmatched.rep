@@ -1,0 +1,44 @@
+No timing arcs found for model 'altpll' in technology 'cycloneii'.
+    Creating black box model.
+Delay model for work altsyncram_RTLC_LONGENTBBox0 not specified.
+No timing arcs found for model 'altsyncram_RTLC_LONGENTBBox0' in technology 'work'.
+    Creating black box model.
+Delay model for work altsyncram_RTLC_LONGENTBBox1 not specified.
+No timing arcs found for model 'altsyncram_RTLC_LONGENTBBox1' in technology 'work'.
+    Creating black box model.
+Delay model for work dcfifo_RTLC_LONGENTBBox2 not specified.
+No timing arcs found for model 'dcfifo_RTLC_LONGENTBBox2' in technology 'work'.
+    Creating black box model.
+No timing arcs found for model 'altpll' in technology 'cycloneii'.
+    Creating black box model.
+Delay model for work altsyncram_RTLC_LONGENTBBox0 not specified.
+No timing arcs found for model 'altsyncram_RTLC_LONGENTBBox0' in technology 'work'.
+    Creating black box model.
+Delay model for work altsyncram_RTLC_LONGENTBBox1 not specified.
+No timing arcs found for model 'altsyncram_RTLC_LONGENTBBox1' in technology 'work'.
+    Creating black box model.
+Delay model for work dcfifo_RTLC_LONGENTBBox2 not specified.
+No timing arcs found for model 'dcfifo_RTLC_LONGENTBBox2' in technology 'work'.
+    Creating black box model.
+No timing arcs found for model 'altpll' in technology 'cycloneii'.
+    Creating black box model.
+Delay model for work altsyncram_RTLC_LONGENTBBox0 not specified.
+No timing arcs found for model 'altsyncram_RTLC_LONGENTBBox0' in technology 'work'.
+    Creating black box model.
+Delay model for work altsyncram_RTLC_LONGENTBBox1 not specified.
+No timing arcs found for model 'altsyncram_RTLC_LONGENTBBox1' in technology 'work'.
+    Creating black box model.
+Delay model for work dcfifo_RTLC_LONGENTBBox2 not specified.
+No timing arcs found for model 'dcfifo_RTLC_LONGENTBBox2' in technology 'work'.
+    Creating black box model.
+No timing arcs found for model 'altpll' in technology 'cycloneii'.
+    Creating black box model.
+Delay model for work altsyncram_RTLC_LONGENTBBox0 not specified.
+No timing arcs found for model 'altsyncram_RTLC_LONGENTBBox0' in technology 'work'.
+    Creating black box model.
+Delay model for work altsyncram_RTLC_LONGENTBBox1 not specified.
+No timing arcs found for model 'altsyncram_RTLC_LONGENTBBox1' in technology 'work'.
+    Creating black box model.
+Delay model for work dcfifo_RTLC_LONGENTBBox2 not specified.
+No timing arcs found for model 'dcfifo_RTLC_LONGENTBBox2' in technology 'work'.
+    Creating black box model.

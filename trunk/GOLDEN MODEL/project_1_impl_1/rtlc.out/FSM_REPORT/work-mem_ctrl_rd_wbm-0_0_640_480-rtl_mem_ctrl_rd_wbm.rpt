@@ -1,0 +1,24 @@
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.mem_ctrl_rd_wbm(rtl_mem_ctrl_rd_wbm){generic map (reset_polarity_g => 0 mode_g => 0 img_hor_pixels_g => 640 img_ver_lines_g => 480)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 5
+Primary State Variable          : wbm_cur_st[4:0]
+Async set/reset state(s)        : 00001 
+Re-encoding Scheme              : ONEHOT 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                        wbm_idle_st	                              00001	                         00001
+FSM:	    1	                     wbm_req_arb_st	                              00010	                         00010
+FSM:	    2	                          wbm_rx_st	                              00100	                         00100
+FSM:	    3	                  wbm_wait_burst_st	                              01000	                         01000
+FSM:	    4	                        wbm_bank_st	                              10000	                         10000
+
+
+

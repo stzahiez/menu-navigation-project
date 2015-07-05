@@ -1,0 +1,8 @@
+8:-out_dir
+74:P:/Menu_Navigation_Projectwc/trunk/GOLDEN MODEL/project_1_impl_1//rtlc.out
+10:-pipe_flow
+25:-comment_transoff_regions
+13:-lib_map_file
+74:P:/Menu_Navigation_Projectwc/trunk/GOLDEN MODEL/project_1_impl_1//.jaguarc
+151:+incdir+P:/Menu_Navigation_Projectwc/trunk/GOLDEN MODEL+P:/Menu_Navigation_Projectwc/trunk/GOLDEN+P:/Menu_Navigation_Projectwc/trunk/GOLDEN MODEL/MODEL
+17:+define+synthesis

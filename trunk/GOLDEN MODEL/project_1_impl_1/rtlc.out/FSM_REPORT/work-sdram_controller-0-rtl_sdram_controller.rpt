@@ -1,0 +1,57 @@
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.sdram_controller(rtl_sdram_controller){generic map (reset_polarity_g => 0)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 2
+
+1.
+--------------------------------------------------
+Number of States                : 16
+Primary State Variable          : current_state[15:0]
+Other State Variable(s)         : 1) next_state[15:0]
+Async set/reset state(s)        : 0000000000000001 
+Re-encoding Scheme              : ONEHOT 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                            IDLE_ST	                   0000000000000001	              0000000000000001
+FSM:	    1	                         REFRESH_ST	                   0000000000000010	              0000000000000010
+FSM:	    2	                    REFRESH_WAIT_ST	                   0000000000000100	              0000000000000100
+FSM:	    3	                             ACT_ST	                   0000000000001000	              0000000000001000
+FSM:	    4	                        WAIT_ACT_ST	                   0000000000010000	              0000000000010000
+FSM:	    5	                          WRITE0_ST	                   0000000000100000	              0000000000100000
+FSM:	    6	                          WRITE1_ST	                   0000000001000000	              0000000001000000
+FSM:	    7	                  WRITE_BST_STOP_ST	                   0000000010000000	              0000000010000000
+FSM:	    8	                           READ0_ST	                   0000000100000000	              0000000100000000
+FSM:	    9	                           READ1_ST	                   0000001000000000	              0000001000000000
+FSM:	   10	                           READ2_ST	                   0000010000000000	              0000010000000000
+FSM:	   11	                           READ3_ST	                   0000100000000000	              0000100000000000
+FSM:	   12	                           READ4_ST	                   0001000000000000	              0001000000000000
+FSM:	   13	                           READ5_ST	                   0010000000000000	              0010000000000000
+FSM:	   14	                   READ_BST_STOP_ST	                   0100000000000000	              0100000000000000
+FSM:	   15	                        WAIT_PRE_ST	                   1000000000000000	              1000000000000000
+
+
+
+
+2.
+--------------------------------------------------
+Number of States                : 8
+Primary State Variable          : current_init_state[7:0]
+Other State Variable(s)         : 1) next_init_state[7:0]
+Async set/reset state(s)        : 00000001 
+Re-encoding Scheme              : ONEHOT 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                       INIT_IDLE_ST	                           00000001	                      00000001
+FSM:	    1	                 INIT_WAIT_200us_ST	                           00000010	                      00000010
+FSM:	    2	                  INIT_PRECHARGE_ST	                           00000100	                      00000100
+FSM:	    3	                   INIT_WAIT_PRE_ST	                           00001000	                      00001000
+FSM:	    4	                   INIT_AUTO_REF_ST	                           00010000	                      00010000
+FSM:	    5	              INIT_AUTO_REF_WAIT_ST	                           00100000	                      00100000
+FSM:	    6	                   INIT_MODE_REG_ST	                           01000000	                      01000000
+FSM:	    7	              INIT_WAIT_MODE_REG_ST	                           10000000	                      10000000
+
+
+

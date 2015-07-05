@@ -1,0 +1,100 @@
+//  Precision RTL Plus  2014a.1_64-bit (Production Release) Mon Feb 24 02:39:08 PST 2014
+//  
+//  Copyright (c) Mentor Graphics Corporation, 1996-2014, All Rights Reserved.
+//             Portions copyright 1991-2008 Compuware Corporation
+//                       UNPUBLISHED, LICENSED SOFTWARE.
+//            CONFIDENTIAL AND PROPRIETARY INFORMATION WHICH IS THE
+//          PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+//  
+//  Running on Windows 7 stzahiez@DIGLAB-08 Service Pack 1 6.01.7601 
+//  
+//  Start time Sun Jul 05 16:45:35 2015
+
+***************************************************************
+Device Utilization for EP2C35F672C
+***************************************************************
+Resource                          Used    Avail   Utilization
+---------------------------------------------------------------
+IOs                               146     459      31.81%
+LUTs                              3325    33216    10.01%
+Registers                         2217    33216     6.67%
+Memory Bits                       56180   483840   11.61%
+DSP block 9-bit elems             0       70        0.00%
+---------------------------------------------------------------
+
+***************************************************************
+
+Library: work    Cell: top_synthesis    View: top_synthesis_rtl
+
+***************************************************************
+
+  Cell                           Library  References     Total Area
+
+ GND                             cycloneii     1 x
+ NOT                             cycloneii    79 x
+ VCC                             cycloneii     1 x
+ add_19_0                        OPERATORS     1 x     19     19 LUTs
+ altpll                          cycloneii     1 x
+ altsyncram_RTLC_LONGENTBBox0    work          1 x
+ altsyncram_RTLC_LONGENTBBox1    work          1 x
+ cycloneii_io                    cycloneii   146 x      1    146 IOs
+ cycloneii_lcell_comb            cycloneii  2854 x      1   2854 LUTs
+ cycloneii_lcell_ff              cycloneii  2021 x      1   2021 Registers
+ dcfifo_RTLC_LONGENTBBox2        work          1 x      1      1 dcfifo_RTLC_LONGENTBBox2
+ gt_19_0                         OPERATORS     1 x     13     13 LUTs
+ gt_19_1                         OPERATORS     1 x     10     10 LUTs
+ inc_10_0                        OPERATORS     1 x     10     10 LUTs
+ inc_10_1                        OPERATORS     1 x     10     10 LUTs
+ inc_10_2                        OPERATORS     1 x     10     10 LUTs
+ inc_10_3                        OPERATORS     1 x     10     10 LUTs
+ inc_10_4                        OPERATORS     1 x     10     10 LUTs
+ inc_10_5                        OPERATORS     1 x     10     10 LUTs
+ inc_10_6                        OPERATORS     1 x     11     11 LUTs
+ inc_10_7                        OPERATORS     1 x     10     10 LUTs
+ inc_10_8                        OPERATORS     1 x     10     10 LUTs
+ inc_10_9                        OPERATORS     1 x     10     10 LUTs
+ inc_11_0                        OPERATORS     1 x     11     11 LUTs
+ inc_16_0                        OPERATORS     1 x     16     16 LUTs
+ inc_22_0                        OPERATORS     1 x     22     22 LUTs
+ inc_22_1                        OPERATORS     1 x     22     22 LUTs
+ inc_32_0                        OPERATORS     1 x     32     32 LUTs
+ inc_5_0                         OPERATORS     1 x      6      6 LUTs
+ inc_9_0                         OPERATORS     1 x      9      9 LUTs
+ incdec_11_0                     OPERATORS     1 x     12     12 LUTs
+ modgen_counter_19_0             OPERATORS     1 x     20     20 LUTs
+                                                       19     19 Registers
+ modgen_counter_19_1             OPERATORS     1 x     20     20 LUTs
+                                                       19     19 Registers
+ modgen_counter_26_0             OPERATORS     1 x     26     26 LUTs
+                                                       26     26 Registers
+ modgen_counter_26_1             OPERATORS     1 x     26     26 LUTs
+                                                       26     26 Registers
+ modgen_counter_26_2             OPERATORS     1 x     26     26 LUTs
+                                                       26     26 Registers
+ modgen_counter_26_3             OPERATORS     1 x     26     26 LUTs
+                                                       26     26 Registers
+ modgen_counter_27_0             OPERATORS     1 x     27     27 LUTs
+                                                       27     27 Registers
+ modgen_counter_27_1             OPERATORS     1 x     27     27 LUTs
+                                                       27     27 Registers
+ ram_dq_13_0                     OPERATORS     1 x   3900   3900 Memory Bits
+ ram_dq_24_0                     OPERATORS     1 x   9200   9200 Memory Bits
+ ram_dq_8_0                      OPERATORS     1 x   8192   8192 Memory Bits
+ ram_dq_8_1                      OPERATORS     1 x   8192   8192 Memory Bits
+ ram_dq_8_2                      OPERATORS     1 x     72     72 Memory Bits
+ ram_dq_8_3                      OPERATORS     1 x   5120   5120 Memory Bits
+ ram_dq_8_4                      OPERATORS     1 x   5120   5120 Memory Bits
+
+ Number of ports :                     146
+ Number of nets :                     6012
+ Number of instances :                5142
+ Number of references to this view :     0
+
+Total accumulated area : 
+ Number of IOs :                       146
+ Number of LCs :                         1
+ Number of LUTs :                     3325
+ Number of Memory Bits :             56180
+ Number of Registers :                2217
+ Black Box dcfifo_RTLC_LONGENTBBox2 :     1
+ Number of accumulated instances :    5816

@@ -1,0 +1,26 @@
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.mp_dec(rtl_mp_dec){generic map (reset_polarity_g => 0 len_dec1_g => true sof_d_g => 1 type_d_g => 1 addr_d_g => 2 len_d_g => 2 crc_d_g => 1 eof_d_g => 1 sof_val_g => 100 eof_val_g => 200 width_g => 8)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 7
+Primary State Variable          : cur_st[6:0]
+Async set/reset state(s)        : 0000001 
+Re-encoding Scheme              : ONEHOT 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                             sof_st	                            0000001	                       0000001
+FSM:	    1	                            type_st	                            0000010	                       0000010
+FSM:	    2	                            addr_st	                            0000100	                       0000100
+FSM:	    3	                             len_st	                            0001000	                       0001000
+FSM:	    4	                            data_st	                            0010000	                       0010000
+FSM:	    5	                             crc_st	                            0100000	                       0100000
+FSM:	    6	                             eof_st	                            1000000	                       1000000
+
+
+

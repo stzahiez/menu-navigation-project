@@ -1,0 +1,44 @@
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.mem_ctrl_wr_wbm(rtl_mem_ctrl_wr_wbm){generic map (reset_polarity_g => 0 mode_g => 0 message_g => 1 img_hor_pixels_g => 640 img_ver_lines_g => 480)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 2
+
+1.
+--------------------------------------------------
+Number of States                : 10
+Primary State Variable          : wbm_cur_st[9:0]
+Async set/reset state(s)        : 0000000001 
+Re-encoding Scheme              : ONEHOT 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                        wbm_idle_st	                         0000000001	                    0000000001
+FSM:	    1	                     wbm_req_arb_st	                         0000000010	                    0000000010
+FSM:	    2	                          wbm_tx_st	                         0000000100	                    0000000100
+FSM:	    3	                  wbm_wait_burst_st	                         0000001000	                    0000001000
+FSM:	    4	                    wbm_wait_sum_st	                         0100000000	                    0000010000
+FSM:	    5	                         wbm_sum_st	                         1000000000	                    0000100000
+FSM:	    6	                 wbm_bank_switch_st	                         0001000000	                    0001000000
+FSM:	    7	                 wbm_wait_switch_st	                         0000010000	                    0010000000
+FSM:	    8	                wbm_wait2_switch_st	                         0000100000	                    0100000000
+FSM:	    9	                        wbm_bank_st	                         0010000000	                    1000000000
+
+
+
+
+2.
+--------------------------------------------------
+Number of States                : 3
+Primary State Variable          : inc_sum_wr_cnt[1:0]
+Async set/reset state(s)        : 00 
+Encoding Scheme: Preserving User Encoding
+FSM: Info, state encoding table:
+FSM:	Index	                            Literal	                      Encoding
+FSM:	    0	                                 01	                            01
+FSM:	    1	                                 10	                            10
+FSM:	    2	                                 00	                            00
+
+
+
