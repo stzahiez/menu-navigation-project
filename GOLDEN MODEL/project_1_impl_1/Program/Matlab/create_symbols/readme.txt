@@ -1,0 +1,1 @@
+MATLAB functions to create synthetic symbol for simulation/FPGA usage

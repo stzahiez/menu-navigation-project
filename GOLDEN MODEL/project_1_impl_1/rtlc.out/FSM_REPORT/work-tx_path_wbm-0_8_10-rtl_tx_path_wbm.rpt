@@ -1,0 +1,22 @@
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.tx_path_wbm(rtl_tx_path_wbm){generic map (reset_polarity_g => 0 data_width_g => 8 addr_width_g => 10)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 3
+Primary State Variable          : wbm_cur_st[1:0]
+Async set/reset state(s)        : 00 
+Encoding Scheme: Preserving User Encoding
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                        wbm_idle_st	                                 00	                            00
+FSM:	    1	                          wbm_rx_st	                                 01	                            01
+FSM:	    2	                  wbm_wait_burst_st	                                 10	                            10
+
+
+

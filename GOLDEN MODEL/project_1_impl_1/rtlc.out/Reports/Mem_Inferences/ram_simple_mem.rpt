@@ -1,0 +1,11 @@
+Inferred RAM
+------------
+  1. Instance: rtlcram_simple_ram_data_337_n0
+    File: P:/Menu_Navigation_Projectwc/trunk/GOLDEN MODEL/ram_simple.vhd , Net: ram_data, Type: single port
+    port 1  write
+    port 1  address width: 10
+    port 1  data width: 8
+    port 2  read
+    port 2  address width: 10
+    port 2  data width: 8
+

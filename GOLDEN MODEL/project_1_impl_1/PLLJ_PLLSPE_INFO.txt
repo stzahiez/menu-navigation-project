@@ -1,0 +1,5 @@
+PLL_Name	altpll:global_nets_inst_clk_blk_inst_pll_inst_altpll_component|pll
+PLLJITTER	25
+PLLSPEmax	84
+PLLSPEmin	-53
+

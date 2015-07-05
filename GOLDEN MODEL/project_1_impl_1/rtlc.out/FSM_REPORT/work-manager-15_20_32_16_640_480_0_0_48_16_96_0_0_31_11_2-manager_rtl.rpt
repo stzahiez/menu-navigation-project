@@ -1,0 +1,24 @@
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.manager(manager_rtl){generic map (sym_row_g => 15 sym_col_g => 20 inside_row_g => 32 sdram_burst_g => 16 hor_active_pixels_g => 640 ver_active_lines_g => 480 hor_left_border_g => 0 ...)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 5
+Primary State Variable          : current_sm[4:0]
+Async set/reset state(s)        : 00001 
+Re-encoding Scheme              : ONEHOT 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                            idle_st	                              00001	                         00001
+FSM:	    1	                         write_a_st	                              00010	                         00010
+FSM:	    2	                  read_a_write_b_st	                              10000	                         00100
+FSM:	    3	                  write_a_read_b_st	                              01000	                         01000
+FSM:	    4	                          read_b_st	                              00100	                         10000
+
+
+

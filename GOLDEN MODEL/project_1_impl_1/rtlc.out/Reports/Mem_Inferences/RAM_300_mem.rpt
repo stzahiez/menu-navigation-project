@@ -1,0 +1,11 @@
+Inferred RAM
+------------
+  1. Instance: rtlcRAM_300_mem_277_n0
+    File: P:/Menu_Navigation_Projectwc/trunk/GOLDEN MODEL/RAM_300.vhd , Net: mem, Type: single port
+    port 1  write
+    port 1  address width: 9
+    port 1  data width: 13
+    port 2  read
+    port 2  address width: 9
+    port 2  data width: 13
+

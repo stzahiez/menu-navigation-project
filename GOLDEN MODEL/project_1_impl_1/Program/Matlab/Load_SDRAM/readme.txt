@@ -1,0 +1,1 @@
+MATLAB function to create text file of SDRAM model, for the SDRAM model of Symbol Generator project

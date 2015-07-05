@@ -1,0 +1,25 @@
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.rx_path(rtl_rx_path){generic map (reset_polarity_g => 0 len_dec1_g => true sof_d_g => 1 type_d_g => 1 addr_d_g => 2 len_d_g => 2 crc_d_g => 1 eof_d_g => 1 sof_val_g => 100 eof_val_g => 200 ...)}
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 6
+Primary State Variable          : wbm_cur_st[5:0]
+Async set/reset state(s)        : 000001 
+Re-encoding Scheme              : ONEHOT 
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                        wbm_idle_st	                             000001	                        000001
+FSM:	    1	                         wbm_neg_st	                             000010	                        000010
+FSM:	    2	                          wbm_tx_st	                             000100	                        000100
+FSM:	    3	                  wbm_wait_burst_st	                             001000	                        001000
+FSM:	    4	                     wbm_tx_type_st	                             010000	                        010000
+FSM:	    5	                   wbm_wait_type_st	                             100000	                        100000
+
+
+

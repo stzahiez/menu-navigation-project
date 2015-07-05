@@ -1,0 +1,22 @@
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Module : work.opcode_unite(opcode_unite_rtl)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Number of FSMs Extracted : 1
+
+1.
+--------------------------------------------------
+Number of States                : 3
+Primary State Variable          : current_sm[1:0]
+Async set/reset state(s)        : 00 
+Encoding Scheme: Preserving User Encoding
+FSM: Info, state encoding table:
+FSM:	Index	                         State Name	                            Literal	                      Encoding
+FSM:	    0	                            idle_st	                                 00	                            00
+FSM:	    1	                             mp1_st	                                 01	                            01
+FSM:	    2	                             mp2_st	                                 10	                            10
+
+
+
